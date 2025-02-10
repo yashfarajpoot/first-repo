@@ -1,6 +1,7 @@
 package com.faiza1.intent;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,27 +38,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start signup activity
-
+       Intent intent = new Intent(MainActivity.this,SignUpActivity.class);
             }
         });
 
-/*
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = email.getText().toString();
                 String password = password.getText().toString();
 
 
                 if (email.isEmpty()) {
                     Toast.makeText(MainActivity.this, "please enter email", Toast.LENGTH_LONG).show();
-                    Log.e("onclick",email);
+                    Log.e("onclick", email);
                     return;
                 }
                 if (password.isEmpty()) {
                     Toast.makeText(MainActivity.this, "please enter password", Toast.LENGTH_LONG).show();
-                    Log.e("onclick",password);
+                    Log.e("onclick", password);
                     return;
                 }
 
@@ -67,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
                     return;
                 }
+            }
             });
-    }}
-*/
+
 
 
 
