@@ -42,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (username.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Please enter username", Toast.LENGTH_LONG)
                             .show();
-                    Log.e("onclick", email);
+                    Log.e("onclick", username);
                     return;
                 }
 
