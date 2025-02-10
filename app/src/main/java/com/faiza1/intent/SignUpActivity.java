@@ -59,7 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 if (password.length() < 8) {
                     Toast.makeText(SignUpActivity.this, "Please enter the at least 8 character", Toast.LENGTH_LONG).show();
-
+           
                     return;
                 }
                 tvSignIn.setOnClickListener(new View.OnClickListener() {
