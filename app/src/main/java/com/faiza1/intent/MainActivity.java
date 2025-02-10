@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start signup activity
-                
+
             }
         });
 
+/*
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
     }}
+*/
 
 
 
