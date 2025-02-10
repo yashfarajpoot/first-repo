@@ -40,19 +40,21 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                 if (username.isEmpty()) {
-                    Toast.makeText(SignUpActivity.this, "Please enter username", Toast.LENGTH_SHORT)
+                    Toast.makeText(SignUpActivity.this, "Please enter username", Toast.LENGTH_LONG)
                             .show();
-                    Log.e("onclick", email);
+                    Log.e("onclick", username);
+                    return;
                 }
 
                 if (email.isEmpty()) {
-                    Toast.makeText(SignUpActivity.this, "Please enter Email", Toast.LENGTH_SHORT)
-                            .show();
+                    Toast.makeText(SignUpActivity.this, "Please enter Email", Toast.LENGTH_LONG).show();
                     Log.e("onclick", email);
+                    return;
                 }
                 if (password.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Please enter password", Toast.LENGTH_LONG).show();
                     Log.e("onclick", password);
+                    return;
 
                 }
                 if (password.length() < 8) {
