@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="Home"
+    android:id="@+id/home"
+    android:icon="@drawable/baseline_account_balance_24"/>
+    <item android:title="Notification"
+        android:id="@+id/notification" />
+<item android:title="Setting"
+    android:id="@+id/setting"
+    android:icon="@drawable/setting"/>
+</menu>
