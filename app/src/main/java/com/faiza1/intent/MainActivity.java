@@ -3,6 +3,7 @@ package com.faiza1.intent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    EditText email;
-    EditText password;
+    EditText edtEmail;
+    EditText edtPassword;
 
     TextView tvSignup;
     Button  btnSignin;
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_main);
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
+        edtEmail = findViewById(R.id.edt_email);
+        edtPassword = findViewById(R.id.edt_password);
         btnSignin = findViewById(R.id.btn_signin);
         tvSignup = findViewById(R.id.tv_signup);
 
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = email.getText().toString();
-                String password = password.getText().toString();
+                String email = edtEmail.getText().toString();
+                String password = edtPassword.getText().toString();
 
 
                 if (email.isEmpty()) {

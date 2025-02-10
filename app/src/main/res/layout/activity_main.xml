@@ -25,7 +25,7 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"/>
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/edt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -36,7 +36,7 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"/>
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
