@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
                                             //start signup activity
 
                                             SharedPreferences preferences = getSharedPreferences("main", MODE_PRIVATE);
-                                            boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
+                                            boolean isFirstTime = preferences.getBoolean("isFirstTime", false);
 
-                                            if (isLoggedIn) {
-                                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                            if (isFirstTime) {
+                                                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
                                                 startActivity(intent);
                                             } else {
-                                                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                                 startActivity(intent);
                                             }
 
