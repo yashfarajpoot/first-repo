@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 //start signup activity
                 Toast.makeText(MainActivity.this,"Login Sucessful!", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,28 +65,15 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-
                 if (password.length() < 8) {
                     Toast.makeText(MainActivity.this, "please enter at least 8 character", Toast.LENGTH_LONG).show();
 
                     return;
                 }
-                Intent intent = new Intent(MainActivity.this, SignUpActivity .class);
+                Intent intent = new Intent(MainActivity.this, HomeActivity .class);
                 startActivity(intent);
             }
 
             });
-
-
-
-
-
-
-
-       
-
-
-        
-
     }
 }
