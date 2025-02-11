@@ -39,16 +39,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start signup activity
-                Toast.makeText(MainActivity.this"Login Sucessful!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"Login Sucessful!", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
-        
+
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String email = edtEmail.getText().toString();
                 String password = edtPassword.getText().toString();
 
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
                     return;
                 }
+                Intent intent = new Intent(MainActivity.this, SignUpActivity .class);
+                startActivity(intent);
             }
 
             });
