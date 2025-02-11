@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start signup activity
-                Toast.makeText(MainActivity.this,"Login Sucessful!", Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
