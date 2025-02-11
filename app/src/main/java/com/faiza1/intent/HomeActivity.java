@@ -23,8 +23,18 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
+                if(item.getItemId() == R.id.home) {
+
+                }
+                else if(item.getItemId() == R.id.notification){
+
+                }
+                else if(item.getItemId() == R.id.setting){
+
+                }
+                return true;
             }
+                 
         });
 
 
