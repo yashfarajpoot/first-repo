@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
                                             boolean isFirstTime = preferences.getBoolean("isFirstTime", false);
 
                                             if (isFirstTime) {
-                                                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                                                Intent intent = new Intent(MainActivity.this,HomeActivity .class);
                                                 startActivity(intent);
                                             } else {
-                                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                                Intent intent = new Intent(MainActivity.this, SignUpActivity .class);
                                                 startActivity(intent);
                                             }
 
