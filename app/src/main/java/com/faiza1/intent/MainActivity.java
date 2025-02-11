@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                                             //start signup activity
 
                                             SharedPreferences preferences = getSharedPreferences("main", MODE_PRIVATE);
-                                            boolean isFirstTime = preferences.getBoolean("isFirstTime", false);
+                                            boolean isFirstTime = preferences.getBoolean("isFirstTime", true);
 
                                             if (isFirstTime) {
                                                 Intent intent = new Intent(MainActivity.this,HomeActivity .class);
