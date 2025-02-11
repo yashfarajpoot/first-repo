@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 String email = edtEmail.getText().toString();
                 String password = edtPassword.getText().toString();
 
-
                 if (email.isEmpty()) {
                     Toast.makeText(MainActivity.this, "please enter email", Toast.LENGTH_LONG).show();
                     Log.e("onclick", email);
@@ -72,20 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(MainActivity.this,SignUpActivity.class);
                 startActivity(intent);
+
             }
 
             });
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
