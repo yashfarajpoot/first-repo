@@ -36,26 +36,16 @@ public class MainActivity extends AppCompatActivity {
         tvSignup = findViewById(R.id.tv_signup);
 
         tvSignup.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            //start signup activity
+            @Override
+            public void onClick(View v) {
+                //start signup activity
+                Toast.makeText(MainActivity.this"Login Sucessful!", Toast.LENGTH_LONG).show();
 
-                                            SharedPreferences preferences = getSharedPreferences("main", MODE_PRIVATE);
-                                            boolean isFirstTime = preferences.getBoolean("isFirstTime", false);
-
-                                            if (isFirstTime) {
-                                                Intent intent = new Intent(MainActivity.this,HomeActivity .class);
-                                                startActivity(intent);
-                                            } else {
-                                                Intent intent = new Intent(MainActivity.this, SignUpActivity .class);
-                                                startActivity(intent);
-                                            }
-
-                                            finish();
-                                        }
-                                    });
-
-
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
