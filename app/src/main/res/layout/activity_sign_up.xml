@@ -51,7 +51,12 @@
         android:id="@+id/edt_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your password"/>
+
+        android:inputType="numberPassword"
+        android:hint="Enter your correct password"/>
+
+
+
 
     <Button
         android:id="@+id/btn_signup"
