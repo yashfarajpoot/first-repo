@@ -30,7 +30,12 @@ public class SignUpActivity extends AppCompatActivity {
         edtUserName = findViewById(R.id.edt_username);
         edtEmail = findViewById(R.id.edt_email);
         edtPassword = findViewById(R.id.edt_pass);
+
  tvSignIn= findViewById(R.id.tv_signin);
+
+        tvSignIn = findViewById(R.id.tv_signin);
+
+
         tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
