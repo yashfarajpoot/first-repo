@@ -1,0 +1,68 @@
+package com.faiza1.intent;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+
+public class CreateContactListActivity extends AppCompatActivity {
+
+
+    TextInputEditText editTextName, editTextPhone;
+    Button btnAddContact;
+    ArrayList<String> contactList;
+    ArrayAdapter<String> contactAdapter;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contact_list);
+
+        // Initializing the views
+        editTextName = findViewById(R.id.edt_name);
+        editTextPhone = findViewById(R.id.edt_number);
+        btnAddContact = findViewById(R.id.buttonAddContact);
+
+
+        btnAddContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = editTextName.getText().toString();
+                String phone = editTextPhone.getText().toString();
+
+                if (name.isEmpty()) {
+                    Toast.makeText(CreateContactListActivity.this, "Please enter Name", Toast.LENGTH_LONG).show();
+                    Log.e("onclick", name);
+                    return;
+
+                }
+                if (phone.isEmpty()) {
+                    Toast.makeText(CreateContactListActivity.this, "Please enter Number", Toast.LENGTH_LONG).show();
+                    Log.e("onclick", phone);
+                    return;
+                }
+               if (phone.length() <  11) {
+                    Toast.makeText(CreateContactListActivity.this, "Please enter the at least 11 Number", Toast.LENGTH_LONG).show();
+
+                   return;
+                }
+            }
+        });
+    }
+}
+
+
+
+
+
+
