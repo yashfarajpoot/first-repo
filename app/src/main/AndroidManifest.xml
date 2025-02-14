@@ -13,7 +13,12 @@
         android:theme="@style/Theme.Intent"
         tools:targetApi="31">
         <activity
+
             android:name=".CreateContactListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SafetyTipsActivity2"
             android:exported="false" />
 
         <activity
