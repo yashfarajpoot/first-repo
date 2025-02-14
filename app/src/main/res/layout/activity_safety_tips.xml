@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="20dp"
    >
     <TextView
         android:id="@+id/tv_heading"
@@ -18,7 +19,7 @@
 
     <Button
         android:id="@+id/btn_share_location"
-        android:layout_width="185dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:padding="15dp"
@@ -27,7 +28,7 @@
 
     <Button
         android:id="@+id/btn_emergency_contacts"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textSize="17sp"
@@ -36,7 +37,7 @@
 
     <Button
         android:id="@+id/btn_well_lit_areas"
-        android:layout_width="215dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textSize="17sp"
@@ -45,7 +46,7 @@
 
     <Button
         android:id="@+id/btn_avoid_oversharing"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="17sp"
         android:layout_marginTop="5dp"
@@ -54,7 +55,7 @@
 
     <Button
         android:id="@+id/btn_avoid_dangerous_situations"
-        android:layout_width="270dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textSize="17sp"
@@ -63,7 +64,7 @@
 
     <Button
         android:id="@+id/btn_keep_phone_charged"
-        android:layout_width="270dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textSize="17sp"
