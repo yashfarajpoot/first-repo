@@ -16,7 +16,7 @@
             android:name=".SafetyTip2"
             android:exported="false" />
         <activity
-            android:name=".SafetyTips"
+            android:name=".SafetyTipsActivity2"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"

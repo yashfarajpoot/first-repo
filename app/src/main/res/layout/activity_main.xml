@@ -26,6 +26,7 @@
         android:layout_marginTop="10dp"/>
     <EditText
         android:id="@+id/edt_email"
+        android:hint="Enter your email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

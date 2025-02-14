@@ -6,13 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class SafetyTips extends AppCompatActivity {
+public class SafetyTipsActivity2 extends AppCompatActivity {
 
     TextView tvHeading;
     Button btnShareLocation;
@@ -38,7 +34,7 @@ public class SafetyTips extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SafetyTips.this, SafetyTip2.class);
+                Intent intent = new Intent(SafetyTipsActivity2.this, SafetyTip2.class);
                 startActivity(intent);
             }
 
@@ -47,7 +43,7 @@ public class SafetyTips extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SafetyTips.this, SafetyTip2.class);
+                Intent intent = new Intent(SafetyTipsActivity2.this, SafetyTip2.class);
                 startActivity(intent);
             }
 
@@ -57,7 +53,7 @@ public class SafetyTips extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SafetyTips.this, SafetyTip2.class);
+                Intent intent = new Intent(SafetyTipsActivity2.this, SafetyTip2.class);
                 startActivity(intent);
             }
 
@@ -66,7 +62,7 @@ public class SafetyTips extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SafetyTips.this, SafetyTip2.class);
+                Intent intent = new Intent(SafetyTipsActivity2.this, SafetyTip2.class);
                 startActivity(intent);
             }
 
@@ -76,7 +72,7 @@ public class SafetyTips extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SafetyTips.this, SafetyTip2.class);
+                Intent intent = new Intent(SafetyTipsActivity2.this, SafetyTip2.class);
                 startActivity(intent);
             }
 
@@ -86,7 +82,7 @@ public class SafetyTips extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SafetyTips.this, SafetyTip2.class);
+                Intent intent = new Intent(SafetyTipsActivity2.this, SafetyTip2.class);
                 startActivity(intent);
             }
 
