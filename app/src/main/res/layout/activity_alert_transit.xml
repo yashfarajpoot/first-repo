@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alert On Transit"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:drawableEnd="@drawable/riskmanagement"
+        android:textSize="43sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:textSize="23sp"
+        android:text="1. Avoid distractions like being too focused on your phone or wearing both earbuds. Stay mindful of who is around you."
+
+/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="23sp"
+        android:text="2. Many public transport apps provide real-time alerts about delays, route changes, or emergencies. Keep notifications on."
+/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:textSize="23sp"
+       android:text=" 3.Hold your bags close, zip them up, and avoid displaying valuables like phones or wallets openly."
+/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="23sp"
+        android:text="4. Stand in well-lit, busy areas while waiting for your ride. If possible, wait near security cameras or transit personnel."
+/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="23sp"
+        android:text="5.  If something feels off, move to a safer area, switch cars, or alert transit staff."
+/>
+</LinearLayout>

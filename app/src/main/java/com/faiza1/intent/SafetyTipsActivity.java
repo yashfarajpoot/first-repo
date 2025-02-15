@@ -92,7 +92,7 @@ public class SafetyTipsActivity extends AppCompatActivity {
             }
 
         });
-        
+
 
 
 

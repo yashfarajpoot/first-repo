@@ -13,14 +13,38 @@
         android:theme="@style/Theme.Intent"
         tools:targetApi="31">
         <activity
-
+            android:name=".safteytip.OversharingSocialMediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.DangerousSituationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.PhoneChargeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.EmergencyContactsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.LearnBasicDefenseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.StayLitAreasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.StrangerDistanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.AlertTransitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".safteytip.ShareLocationActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateContactListActivity"
             android:exported="false" />
-
         <activity
             android:name=".SafetyTipsActivity"
             android:exported="false" />
-
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

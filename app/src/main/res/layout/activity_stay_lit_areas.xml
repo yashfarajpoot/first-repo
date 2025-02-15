@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stay Lit Areas"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="38sp"
+        android:drawableEnd="@drawable/innovation1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:text="1.If stuck in a dark area, use your phone flashlight, but don’t be too distracted."
+/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:layout_margin="10dp"
+        android:text="2.If walking at night, stick to places with proper lighting and people around."
+/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:layout_margin="10dp"
+        android:text="3.Avoid shortcuts through dark alleys, parks, or empty streets."
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:layout_margin="10dp"
+        android:text="4.Before heading out, check which paths are well-lit and safer."
+/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:layout_margin="10dp"
+        android:text="5.If you must pass through a dark spot, move quickly and stay alert."
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:layout_margin="10dp"
+        android:text="6.Light means visibility, safety, and control—so always choose brighter paths whenever possible."
+  />
+</LinearLayout>

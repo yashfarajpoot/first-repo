@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Stranger Distance"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="15dp"
+    android:textStyle="bold"
+    android:textColor="@color/black"
+    android:drawableEnd="@drawable/keepdistance"
+    android:textSize="38sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_margin="10dp"
+        android:text="1.If a stranger is getting too close and making you uncomfortable, take a step back or move aside."
+/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_margin="10dp"
+        android:text="2.Stand confidently and avoid looking nervous, as it can make you seem like an easy target."
+/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_margin="10dp"
+        android:text="3.Don’t completely ignore strangers, but don’t stare too much either. A confident yet neutral look can help."
+/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_margin="10dp"
+        android:text="4.Be mindful of pickpockets and potential risks in crowded places. Keep your belongings secure and maintain awareness."
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_margin="10dp"
+        android:text="5.If someone seems suspicious, change your seat or stand near someone you feel safer with."
+        />
+</LinearLayout>
