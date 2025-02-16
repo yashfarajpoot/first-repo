@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
-public class CreateContactListActivity extends AppCompatActivity {
+public class AlertContactListActivity extends AppCompatActivity {
 
 
     TextInputEditText editTextName, editTextPhone;
@@ -41,18 +41,18 @@ public class CreateContactListActivity extends AppCompatActivity {
                 String phone = editTextPhone.getText().toString();
 
                 if (name.isEmpty()) {
-                    Toast.makeText(CreateContactListActivity.this, "Please enter Name", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AlertContactListActivity.this, "Please enter Name", Toast.LENGTH_LONG).show();
                     Log.e("onclick", name);
                     return;
 
                 }
                 if (phone.isEmpty()) {
-                    Toast.makeText(CreateContactListActivity.this, "Please enter Number", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AlertContactListActivity.this, "Please enter Number", Toast.LENGTH_LONG).show();
                     Log.e("onclick", phone);
                     return;
                 }
                if (phone.length() <  11) {
-                    Toast.makeText(CreateContactListActivity.this, "Please enter the at least 11 Number", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AlertContactListActivity.this, "Please enter the at least 11 Number", Toast.LENGTH_LONG).show();
 
                    return;
                 }

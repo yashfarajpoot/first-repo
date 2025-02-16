@@ -29,13 +29,23 @@ public class SettingFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_setting, container, false);
         TextView  setting = view.findViewById(R.id.tv_setting);
         Button btnFragmentClick = view.findViewById(R.id.btn_contact);
+        Button btnEmergencyClick = view.findViewById(R.id.btn_emergency);
 
         // Set click listener
         btnFragmentClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Intent to start a new Activity when button is clicked
-                Intent intent = new Intent(getActivity() , CreateContactListActivity.class);
+                Intent intent = new Intent(getActivity() , AlertContactListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnEmergencyClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent to start a new Activity when button is clicked
+                Intent intent = new Intent(getActivity(),EmergencyActivity2.class);
                 startActivity(intent);
             }
         });
