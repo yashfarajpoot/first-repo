@@ -45,6 +45,7 @@
         <activity
             android:name=".safteytip.ShareLocationActivity"
             android:exported="false" />
+
         <activity
             android:name=".SafetyTipsActivity"
             android:exported="false" />
