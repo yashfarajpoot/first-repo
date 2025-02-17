@@ -14,9 +14,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class MainActivity extends AppCompatActivity {
-    EditText edtEmail;
-    EditText edtPassword;
+   TextInputEditText editTextEmail;
+    TextInputEditText editTextPassword;
+
 
     TextView tvSignup;
     Button  btnSignin;
@@ -26,9 +29,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_main);
-
-        edtEmail = findViewById(R.id.edt_email);
-        edtPassword = findViewById(R.id.edt_password);
+        editTextEmail=findViewById(R.id.edt_email);
+        editTextPassword = findViewById(R.id.edt_password);
         btnSignin = findViewById(R.id.btn_signin);
         tvSignup = findViewById(R.id.tv_signup);
 
