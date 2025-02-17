@@ -15,9 +15,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText   edtUserName,edtEmail, edtPassword;
+    TextInputEditText editTextName;
+    TextInputEditText editTextEmail;
+    TextInputEditText editTextPassword;
     TextView tvSignIn;
     Button btnSignUp;
     @Override
@@ -26,10 +30,11 @@ public class SignUpActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_sign_up);
 
+        editTextName=findViewById(R.id.edt_name);
+        editTextEmail=findViewById(R.id.edt_email_add);
+        editTextPassword=findViewById(R.id.edt_password);
         btnSignUp = findViewById(R.id.btn_signup);
-        edtUserName = findViewById(R.id.edt_username);
-        edtEmail = findViewById(R.id.edt_email);
-        edtPassword = findViewById(R.id.edt_pass);
+
 
  tvSignIn= findViewById(R.id.tv_signin);
 
