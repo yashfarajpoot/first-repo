@@ -9,6 +9,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.faiza1.intent.safetytip.AlertTransitActivity;
+import com.faiza1.intent.safetytip.DangerousSituationsActivity;
+import com.faiza1.intent.safetytip.EmergencyContactsActivity;
+import com.faiza1.intent.safetytip.OversharingSocialMediaActivity;
+import com.faiza1.intent.safetytip.PhoneChargedActivity;
+import com.faiza1.intent.safetytip.SelfDefenseActivity;
 import com.faiza1.intent.safetytip.ShareLocationActivity;
 import com.faiza1.intent.safetytip.StayLitAreasActivity;
 import com.faiza1.intent.safetytip.StrangerDistanceActivity;
@@ -42,6 +47,7 @@ public class SafetyTipsActivity extends AppCompatActivity {
         btnDistance=findViewById(R.id.btn_distance);
         btnSelf=findViewById(R.id.btn_self);
         tvHeading=findViewById(R.id.tv_heading);
+
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +82,42 @@ public class SafetyTipsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
+        });
+
+        btnSelf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SafetyTipsActivity.this, SelfDefenseActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnEmergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SafetyTipsActivity.this, EmergencyContactsActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SafetyTipsActivity.this, PhoneChargedActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnAvoidDangerousSituation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SafetyTipsActivity.this, DangerousSituationsActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnAvoidOversharing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SafetyTipsActivity.this, OversharingSocialMediaActivity.class);
+                startActivity(intent);
+            }
         });
 
     }
