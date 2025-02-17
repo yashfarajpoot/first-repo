@@ -2,7 +2,6 @@
 <resources>
     <style name="HeadingText">
         <item name="android:textSize">40sp</item>
-        <item name="android:textColor">@color/Purple</item>
         <item name="android:textStyle">bold</item>
     </style>
 
