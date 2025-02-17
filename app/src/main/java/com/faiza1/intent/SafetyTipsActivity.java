@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.faiza1.intent.safteytip.AlertTransitActivity;
-import com.faiza1.intent.safteytip.ShareLocationActivity;
-import com.faiza1.intent.safteytip.StayLitAreasActivity;
-import com.faiza1.intent.safteytip.StrangerDistanceActivity;
+import com.faiza1.intent.safetytip.AlertTransitActivity;
+import com.faiza1.intent.safetytip.ShareLocationActivity;
+import com.faiza1.intent.safetytip.StayLitAreasActivity;
+import com.faiza1.intent.safetytip.StrangerDistanceActivity;
 
 public class SafetyTipsActivity extends AppCompatActivity {
 

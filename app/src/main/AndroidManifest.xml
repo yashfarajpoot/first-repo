@@ -13,19 +13,19 @@
         android:theme="@style/Theme.Intent"
         tools:targetApi="31">
         <activity
-            android:name=".safteytip.OversharingSocialMediaActivity"
+            android:name=".safetytip.OversharingSocialMediaActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.DangerousSituationsActivity"
+            android:name=".safetytip.DangerousSituationsActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.PhoneChargedActivity"
+            android:name=".safetytip.PhoneChargedActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.EmergencyContactsActivity"
+            android:name=".safetytip.EmergencyContactsActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.SelfDefenseActivity"
+            android:name=".safetytip.SelfDefenseActivity"
             android:exported="false" />
         <activity
             android:name=".EmergencyActivity2"
@@ -34,16 +34,16 @@
             android:name=".AlertContactListActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.StayLitAreasActivity"
+            android:name=".safetytip.StayLitAreasActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.StrangerDistanceActivity"
+            android:name=".safetytip.StrangerDistanceActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.AlertTransitActivity"
+            android:name=".safetytip.AlertTransitActivity"
             android:exported="false" />
         <activity
-            android:name=".safteytip.ShareLocationActivity"
+            android:name=".safetytip.ShareLocationActivity"
             android:exported="false" />
 
         <activity
