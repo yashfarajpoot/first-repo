@@ -1,10 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".safetytip.PhoneChargedActivity">
+    tools:context=".safetytip.PhoneChargedActivity"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Use emergency contact"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:drawableEnd="@drawable/emergencycontact"
+        android:textSize="36sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="When it comes to using emergency contacts effectively, here are some tips to ensure you're prepared and can quickly reach out for help if needed:"
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 1:   Pick people who can be trusted to respond quickly, such as close family members, friends, or colleagues."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 2:   Choose contacts who are often available and can assist in urgent situations."
+
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 3:  Have a primary contact (someone you can rely on immediately) and secondary contacts (who can help if the primary person isn’t available)."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4:  Regularly Update Numbers: Ensure that phone numbers, email addresses, and home addresses are current for all your emergency contacts. It’s easy to forget to update contacts after moving or changing phones."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5:  Include Multiple Forms of Contact: Besides phone numbers, include an email address or social media account, if possible, in case your primary method of communication is unavailable."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 6:   Most smartphones allow you to set emergency contacts in the system. This can be accessed without unlocking the phone, which is useful in situations where you're unable to unlock your device."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="7:   Go to Contacts  Emergency Information and add emergency contacts."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="8:   ICE (In Case of Emergency) Label: You can label contacts with (ICE) in their names in your phone's contact list to help responders quickly locate key individuals."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="9:   Display Info on Lock Screen: Many smartphones allow you to add emergency contact info to the lock screen, making it easier for others to access in case you're incapacitated. Include someone who can act on your behalf or provide essential medical information."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 10:   Communicate Expectations: Ensure your emergency contacts know their role. For example, you might ask them to be available for certain times or explain how to help in particular situations (e.g., contacting authorities, offering transport, etc.)."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  11:    Enable location-sharing apps like Find My (Apple) or Google Maps (Android). This allows your emergency contacts to track your location in case you need immediate assistance."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="12:    Google Maps offers location sharing through your contacts, which can be useful during an emergency."
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="13:   Your emergency contact list should include people who can help with various aspects of an emergency. For example:"
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Someone with medical training (like a nurse or doctor)."
+        android:textSize="24sp"
+        android:layout_margin="3dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- A friend who can drive or who lives nearby."
+        android:textSize="24sp"
+        android:layout_margin="3dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- A lawyer or someone familiar with legal matters."
+        android:textSize="24sp"
+        android:layout_margin="3dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="14:   Home Emergency: A neighbor or someone who can access your home in case you can't."
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="15:    You can create a code or alert system with your emergency contacts. For example, sending a specific word (e.g., Help) in a text message, or making a scheduled check-in call could signal that something is wrong."
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="16:   There are various apps that automatically send alerts to your emergency contacts with your location, like Life360 or bSafe."
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="17:   Let your emergency contacts know about any medical conditions or allergies you have, along with essential health information (like blood type, medications, or recent treatments). You can even create a shared document with this info that’s accessible to your contacts."
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="18:   Ensure your contacts know how to help you in different types of emergencies. For example, if you get lost or hurt, they should know how to reach emergency services or provide first aid if needed.
+   "
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="19:   Have a coordinated emergency plan that includes evacuation routes, meeting points, and a way to contact each other if communication is lost. Make sure everyone in your household knows what to do in case of emergencies, whether it’s a fire, medical issue, or natural disaster."
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="20:   In case of emergencies, a group text or app like **WhatsApp** can help you coordinate with multiple people at once, especially if you need to let them know about your situation or get support."
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="21:   Always ensure your phone is charged, especially if you plan on going into potentially risky situations. Keep a portable charger with you if possible."
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="22:   If you can’t reach your emergency contacts by phone, make sure you have an alternative plan, like a safe word or signal that can alert them through another medium, such as email or social media."
+        android:textSize="24sp"
+        android:layout_margin="10dp" />
+
+</LinearLayout>
