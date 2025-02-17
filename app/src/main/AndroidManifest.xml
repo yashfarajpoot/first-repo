@@ -13,15 +13,11 @@
         android:theme="@style/Theme.Intent"
         tools:targetApi="31">
         <activity
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
             android:name=".EmergencyActivity2"
             android:exported="false" />
         <activity
             android:name=".AlertContactListActivity"
-=======
->>>>>>> Stashed changes
             android:name=".safteytip.OversharingSocialMediaActivity"
             android:exported="false" />
         <activity
@@ -50,10 +46,6 @@
             android:exported="false" />
         <activity
             android:name=".CreateContactListActivity"
-<<<<<<< Updated upstream
-=======
->>>>>>> 9fa5e87e0da879711e972081a5e40d5e0f8f0e88
->>>>>>> Stashed changes
             android:exported="false" />
         <activity
             android:name=".SafetyTipsActivity"
