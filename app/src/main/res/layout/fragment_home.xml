@@ -3,11 +3,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".HomeFragment">
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       />
+        android:text="Welcome!"
+        style="@style/HeadingText"
+        android:padding="10dp"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="60dp"
+       android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activate"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+         android:text="Quick Access"
+           android:textSize="20sp"
+          android:padding="10dp"
+           android:textStyle="bold"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:weightSum="2">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#F31E054B"
+        android:padding="16dp"
+        android:layout_marginEnd="16dp">
+        <ImageView
+            android:id="@+id/icon_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/safe"
+        android:contentDescription="Icon 1"
+        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Safety Tips"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:orientation="vertical"
+               android:gravity="center"
+               android:background="#F31E054B"
+               android:padding="16dp">
+               <ImageView
+                   android:id="@+id/icon_2"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:src="@drawable/contact"
+               android:contentDescription="Icon 2"
+               android:layout_marginBottom="8dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Contact"
+                   android:textSize="16sp"
+                   android:textColor="@color/white"
+                   android:textAlignment="center"/>
 
+
+
+
+
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
+   </LinearLayout>
 </FrameLayout>
