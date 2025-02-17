@@ -22,10 +22,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.home) {
-                    loadFragment(new homeFragment());
+                    loadFragment(new HomeFragment());
                 }
                 else if(item.getItemId() == R.id.user){
-                    loadFragment(new userFragment());
+                    loadFragment(new UserFragment() );
                 }
                 else if(item.getItemId() == R.id.setting){
                     loadFragment(new SettingFragment());
