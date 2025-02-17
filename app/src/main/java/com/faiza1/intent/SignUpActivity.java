@@ -54,15 +54,15 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edtEmail.getText().toString();
-                String password = edtPassword.getText().toString();
-                String username = edtUserName.getText().toString();
+                String email = editTextEmail.getText().toString();
+                String password = editTextPassword.getText().toString();
+                String name = editTextName.getText().toString();
 
 
-                if (username.isEmpty()) {
+                if (name.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Please enter username", Toast.LENGTH_LONG)
                             .show();
-                    Log.e("onclick", username);
+                    Log.e("onclick", name);
                     return;
                 }
 
