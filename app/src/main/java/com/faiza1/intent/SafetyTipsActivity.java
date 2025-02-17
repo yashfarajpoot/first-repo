@@ -8,6 +8,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.faiza1.intent.safteytip.AlertTransitActivity;
+import com.faiza1.intent.safteytip.ShareLocationActivity;
+import com.faiza1.intent.safteytip.StayLitAreasActivity;
+import com.faiza1.intent.safteytip.StrangerDistanceActivity;
+
 public class SafetyTipsActivity extends AppCompatActivity {
 
 
@@ -40,61 +45,38 @@ public class SafetyTipsActivity extends AppCompatActivity {
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, SafetyTipActivity2.class);
+                Intent intent = new Intent(SafetyTipsActivity.this, ShareLocationActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnEmergency.setOnClickListener(new View.OnClickListener() {
+        btnAlert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SafetyTipsActivity.this, SafetyTipActivity2.class);
+                Intent intent = new Intent(SafetyTipsActivity.this, AlertTransitActivity.class);
                 startActivity(intent);
             }
 
         });
 
+        btnDistance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(SafetyTipsActivity.this, StrangerDistanceActivity.class);
+                startActivity(intent);
+            }
+
+        });
         btnWellLitAreas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(SafetyTipsActivity.this, SafetyTipActivity2.class);
+                Intent intent = new Intent(SafetyTipsActivity.this, StayLitAreasActivity.class);
                 startActivity(intent);
             }
 
         });
-        btnAvoidOversharing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this,SafetyTipActivity2.class);
-                startActivity(intent);
-            }
-
-        });
-
-        btnAvoidDangerousSituation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(SafetyTipsActivity.this, SafetyTipActivity2.class);
-                startActivity(intent);
-            }
-
-        });
-
-        btnPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(SafetyTipsActivity.this, SafetyTipActivity2.class);
-                startActivity(intent);
-            }
-
-        });
-
-
-
 
     }
 }
