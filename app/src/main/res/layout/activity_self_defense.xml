@@ -1,10 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".safetytip.SelfDefenseActivity">
+    tools:context=".safetytip.SelfDefenseActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Learn basic self defense"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:drawableEnd="@drawable/selfdefense"
+        android:textSize="38sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Self-defense is about protecting yourself from harm in various situations. Here are some key tips to consider:  "/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1:  Always pay attention to your environment. This means noticing things like the people around you, exits, and possible hiding spots.
+"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 2:  Avoid distractions like texting or wearing headphones when walking in unfamiliar or isolated areas.
+"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3:  Yell or shout if someone is trying to attack you. It can attract attention, which might deter the attacker. A strong, confident voice can also throw off a potential assailant’s confidence.
+"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 4:  Stand in a way that allows you to move freely. Keep your hands up in a defensive position—ready to block or strike if needed. Stand sideways to make yourself a smaller target."
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5:  If you need to defend yourself physically, aim for the attacker's most vulnerable areas. These include:"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" - Eyes (poke, scratch, or slap)"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" - Throat (a quick strike can disrupt breathing)"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  - Groin (kicking or striking)"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" - Knees (a kick to the knee can cause instability)"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" - Solar Plexus (right below the ribs to cause shortness of breath)"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="6:  Look for objects in your environment that can be used for defense, such as keys, pens, or bags. A sharp object like a pen can be an effective tool to defend yourself in an emergency."
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 7:  If you can escape without engaging, do so. Run to a populated area or a place where you can find help immediately."
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  8:  Consider enrolling in a class like Krav Maga, Brazilian Jiu-Jitsu, or other martial arts that focus on practical self-defense techniques. Knowing how to disarm someone or defend against common grabs can be incredibly valuable."
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 9:   If something feels off, it probably is. Trust your instincts and remove yourself from a potentially dangerous situation before it escalates."
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 10:  In a high-stress situation, keeping a level head is important. Stay calm, and try to think logically about your next move. Panicking can impair your decision-making."
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 11:  There are many apps that send your location to loved ones if you're in danger. Devices like pepper spray or personal alarms can give you an extra layer of protection.
+
+The best defense is often avoiding dangerous situations when possible, but being prepared with knowledge and skills can help protect you in case of an emergency."
+        android:textSize="24sp"/>
+
+
+</LinearLayout>
