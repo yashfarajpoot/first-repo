@@ -40,8 +40,8 @@
         android:id="@+id/edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter text"
-         android:inputType="numberPassword"/>
+        android:hint="Enter password"
+         android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/btn_signin"
