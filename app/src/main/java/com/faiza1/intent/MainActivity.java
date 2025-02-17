@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edtEmail.getText().toString();
-                String password = edtPassword.getText().toString();
+                String email = editTextEmail.getText().toString();
+                String password = editTextPassword.getText().toString();
 
                 if (email.isEmpty()) {
                     Toast.makeText(MainActivity.this, "please enter email", Toast.LENGTH_LONG).show();
