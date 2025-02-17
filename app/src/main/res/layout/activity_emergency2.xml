@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Emergency Contact"
+        style="@style/HeadingText"
+        android:textSize="30dp"
+        android:gravity="center"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,12 +30,12 @@
             android:textStyle="bold"
             android:layout_margin="15dp"
             android:text="Police"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="15"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginStart="80dp"/>
@@ -49,12 +56,12 @@
             android:layout_margin="15dp"
             android:textStyle="bold"
             android:text="Rescue"
-            android:textSize="30sp"/>
+            android:textSize="25sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1122"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginStart="60dp"/>
@@ -76,15 +83,15 @@
             android:layout_margin="15dp"
             android:textStyle="bold"
             android:text="PHP"
-            android:textSize="30sp"/>
+            android:textSize="25sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1124"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:layout_marginStart="100dp"/>
+            android:layout_marginStart="90dp"/>
 
     </LinearLayout>
     <LinearLayout
@@ -103,12 +110,12 @@
             android:layout_margin="15dp"
             android:textStyle="bold"
             android:text="Edhi"
-            android:textSize="30sp"/>
+            android:textSize="25sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="115"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginStart="100dp"/>

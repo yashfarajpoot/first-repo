@@ -22,10 +22,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.home) {
-
+                    loadFragment(new homeFragment());
                 }
-                else if(item.getItemId() == R.id.notification){
-
+                else if(item.getItemId() == R.id.user){
+                    loadFragment(new userFragment());
                 }
                 else if(item.getItemId() == R.id.setting){
                     loadFragment(new SettingFragment());
@@ -42,17 +42,6 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id. container,fragment).commit();
     }
 
-    public static class ContactItem {
-        // ContentItem.java
 
-            private String title;
-
-            public ContactItem(String title) {
-                this.title = title;
-            }
-
-            public String getTitle() {
-                return title;
-            }
         }
-}
+

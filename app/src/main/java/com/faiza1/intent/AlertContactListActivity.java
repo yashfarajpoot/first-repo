@@ -56,6 +56,10 @@ public class AlertContactListActivity extends AppCompatActivity {
 
                    return;
                 }
+               else {
+                   Toast.makeText(AlertContactListActivity.this, "SuccessFull Add", Toast.LENGTH_LONG).show();
+
+               }
             }
         });
     }
