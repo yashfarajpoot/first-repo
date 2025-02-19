@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.faiza1.intent.safetytip.AlertTransitActivity;
 import com.faiza1.intent.safetytip.DangerousSituationsActivity;
 import com.faiza1.intent.safetytip.EmergencyContactsActivity;
-import com.faiza1.intent.safetytip.OversharingSocialMediaActivity;
 import com.faiza1.intent.safetytip.PhoneChargedActivity;
 import com.faiza1.intent.safetytip.SelfDefenseActivity;
 import com.faiza1.intent.safetytip.ShareLocationActivity;
@@ -25,7 +24,6 @@ public class SafetyTipsActivity extends AppCompatActivity {
     Button btnLocation;
     Button btnEmergency;
     Button btnWellLitAreas;
-    Button btnAvoidOversharing;
     Button btnAvoidDangerousSituation;
     Button  btnPhone;
     Button btnAlert;
@@ -40,7 +38,6 @@ public class SafetyTipsActivity extends AppCompatActivity {
         btnLocation = findViewById(R.id.btn_location);
         btnEmergency=findViewById(R.id.btn_emergency);
         btnWellLitAreas=findViewById(R.id.btn_well_lit_areas);
-        btnAvoidOversharing=findViewById(R.id.btn_avoid_oversharing);
         btnAvoidDangerousSituation=findViewById(R.id.btn_avoid_dangerous_situation);
         btnPhone=findViewById(R.id.btn_phone);
         btnAlert=findViewById(R.id.btn_alert);
@@ -112,13 +109,7 @@ public class SafetyTipsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnAvoidOversharing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, OversharingSocialMediaActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 }

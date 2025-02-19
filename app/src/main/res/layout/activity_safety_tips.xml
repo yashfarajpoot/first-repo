@@ -10,10 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="Safety Tips"
         android:drawableEnd="@drawable/rightarrow2"
-        android:textSize="44sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/black"
        />
@@ -87,17 +87,6 @@
         android:textSize="17sp"
         android:text="8. Avoid Dangerous Situations"
         android:padding="15dp"/>
-
-    <Button
-        android:id="@+id/btn_avoid_oversharing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:padding="15dp"
-        android:text="9. Avoid Oversharing on SocialMedia"
-        android:textSize="17sp" />
-
-
 
 </LinearLayout>
 
