@@ -19,10 +19,9 @@ public class AlertContactListActivity extends AppCompatActivity {
 
     TextInputEditText editTextName, editTextPhone;
     Button btnAddContact;
-    ArrayList<String> contactList;
-    ArrayAdapter<String> contactAdapter;
 
-    @SuppressLint("MissingInflatedId")
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

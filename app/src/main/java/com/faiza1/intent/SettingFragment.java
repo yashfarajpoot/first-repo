@@ -30,6 +30,7 @@ public class SettingFragment extends Fragment {
         TextView  setting = view.findViewById(R.id.tv_setting);
         Button btnFragmentClick = view.findViewById(R.id.btn_contact);
         Button btnEmergencyClick = view.findViewById(R.id.btn_emergency);
+        Button btnSafeClick = view.findViewById(R.id.btn_safe);
 
         // Set click listener
         btnFragmentClick.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +47,15 @@ public class SettingFragment extends Fragment {
             public void onClick(View v) {
                 // Intent to start a new Activity when button is clicked
                 Intent intent = new Intent(getActivity(),EmergencyActivity2.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSafeClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent to start a new Activity when button is clicked
+                Intent intent = new Intent(getActivity(), SafetyTipsActivity.class );
                 startActivity(intent);
             }
         });
