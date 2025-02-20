@@ -33,13 +33,22 @@
             android:text="Police"
             android:textSize="20sp" />
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="15"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:layout_marginStart="80dp"/>
+            android:layout_marginStart="80dp"
+          />
+        <ImageView
+            android:id="@+id/tv_police"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:src="@drawable/call"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,6 +75,12 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginStart="60dp"/>
+        <ImageView
+            android:id="@+id/tv_rescue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/call"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
     <LinearLayout
@@ -93,6 +108,12 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginStart="90dp"/>
+        <ImageView
+            android:id="@+id/tv_php"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/call"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
     <LinearLayout
@@ -120,6 +141,12 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginStart="100dp"/>
+        <ImageView
+            android:id="@+id/tv_edhi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/call"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 </LinearLayout>

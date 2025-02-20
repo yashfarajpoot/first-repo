@@ -1,5 +1,7 @@
 package com.faiza1.intent;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,12 @@ public class MyUtil {
         activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id. container, fragment)
                 .commit();
+    }
+
+    public static void makeCall(Context context, String number){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:"+number));
+        context.startActivity(callIntent);
     }
 }
 

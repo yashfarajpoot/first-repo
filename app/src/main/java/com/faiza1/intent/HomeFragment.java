@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeFragment extends Fragment {
-   private LinearLayout box1,box2;
+   private LinearLayout box1,box2,box3;
 
 
     @Override
@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment {
         // Find the LinearLayouts
         box1 = view.findViewById(R.id.tv_box1);
         box2 = view.findViewById(R.id.tv_box2);
+        box3 = view.findViewById(R.id.tv_box3);
 
 
         box1.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +46,15 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        box3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click for Contact
+                Intent intent = new Intent(getActivity() ,  EmergencyActivity2.class);
+                startActivity(intent);
+            }
+        });
+
 
         return view;
     }

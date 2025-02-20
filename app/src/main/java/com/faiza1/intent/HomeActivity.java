@@ -29,8 +29,8 @@ public class HomeActivity extends AppCompatActivity {
                 else if(item.getItemId() == R.id.user){
                     loadFragment(new UserFragment() );
                 }
-                else if(item.getItemId() == R.id.setting){
-                    loadFragment(new SettingFragment());
+                else if(item.getItemId() == R.id.notification){
+                    loadFragment(new NotificationFragment());
                 }
 
                 return true;

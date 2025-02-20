@@ -4,9 +4,9 @@
     android:id="@+id/home"
     android:icon="@drawable/home"/>
 
-<item android:title="Setting"
-    android:id="@+id/setting"
-    android:icon="@drawable/setting"/>
+<item android:title="Notification"
+    android:id="@+id/notification"
+    android:icon="@drawable/bell"/>
     <item android:title="User"
         android:id="@+id/user"
        android:icon="@drawable/user"/>
