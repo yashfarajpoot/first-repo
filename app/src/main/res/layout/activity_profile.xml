@@ -12,7 +12,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="275dp"
-    android:background="@color/purple"
+    android:background="#F31E054B"
     android:orientation="vertical"
     >
     <!-- Profile Image -->
