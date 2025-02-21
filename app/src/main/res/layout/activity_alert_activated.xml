@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alert Activated"
+        android:gravity="center"
+        style="@style/HeadingText"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/btn_panicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Panic Button"
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:layout_marginTop="170dp"
+        android:layout_gravity="center"
+        />
+
+    <CheckBox
+        android:id="@+id/smsCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMS"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:checked="true"
+        />
+    <CheckBox
+        android:id="@+id/callCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:checked="true"
+        />
+
+    <CheckBox
+        android:id="@+id/locationCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:checked="true" />
+
+</LinearLayout>
+
