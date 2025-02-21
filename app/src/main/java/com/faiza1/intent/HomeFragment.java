@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class HomeFragment extends Fragment {
    private LinearLayout box1,box2,box3;
+Button btnActivate;
 
 
     @Override
@@ -27,6 +28,18 @@ public class HomeFragment extends Fragment {
         box1 = view.findViewById(R.id.tv_box1);
         box2 = view.findViewById(R.id.tv_box2);
         box3 = view.findViewById(R.id.tv_box3);
+        btnActivate = view.findViewById(R.id.btn_activate);
+
+        btnActivate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity() , AlertActivatedActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
         box1.setOnClickListener(new View.OnClickListener() {
