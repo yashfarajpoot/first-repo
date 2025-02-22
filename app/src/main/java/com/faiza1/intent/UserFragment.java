@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class UserFragment extends Fragment {
 
-
+Button btnLogOut;
     public UserFragment() {
         // Required empty public constructor
     }
@@ -31,8 +32,24 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_user,container,false);
-        TextView tvTitle = view.findViewById(R.id.tv_title);
-        return  view;
+
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Button tvTitle = view.findViewById(R.id.tv_title);
+
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(getActivity(), "Logout successfully", Toast.LENGTH_LONG)
+                        .show();
+            }
+
+        });
+        return view;
     }
 }

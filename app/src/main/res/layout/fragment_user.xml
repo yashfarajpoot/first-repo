@@ -32,25 +32,18 @@
 
 
             <TextView
-                android:id="@+id/admin_name"
+                android:id="@+id/edt_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Super Admin"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:layout_gravity="center"/>
-            <TextView
-                android:id="@+id/number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="435656777656"
+                android:text="chaiwithehtisham@gmail.com"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:layout_gravity="center"/>
 
+
         </LinearLayout>
         <Button
-            android:id="@+id/editButton"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Log Out"
