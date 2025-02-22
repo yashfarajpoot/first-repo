@@ -122,14 +122,70 @@
                     android:text="Emergency Contact"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/tv_box4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#F31E054B"
+                android:padding="16dp"
+                android:layout_marginStart="8dp">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/useradd"
+                    android:contentDescription="Image 4"
+                    android:layout_marginBottom="8dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add User"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textAlignment="center"/>
+            </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="16dp">
 
+        <LinearLayout
 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:background="#F31E054B"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="Image 3"
+                android:src="@drawable/link" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Links"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>
 

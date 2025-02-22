@@ -9,5 +9,5 @@
     android:icon="@drawable/bell"/>
     <item android:title="User"
         android:id="@+id/user"
-       android:icon="@drawable/user"/>
+        android:icon="@drawable/user"/>
 </menu>
