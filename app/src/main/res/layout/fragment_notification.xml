@@ -5,15 +5,160 @@
     android:layout_height="match_parent"
     android:layout_margin="15dp"
     tools:context=".NotificationFragment"
+    android:orientation="vertical"
      >
+
     <TextView
+        android:id="@+id/notifications_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_setting"
-        android:text="Notification"
-        style="@style/HeadingText"
-        android:gravity="center"
+        android:layout_below="@id/header"
+        android:text="Notifications"
+        android:textSize="25sp"
+        android:padding="16dp"
+        android:background="#E91E63"
+        android:textColor="#FFFFFF"/>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/notification_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/notifications_title"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/expense_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="!Warning:"
+            android:textSize="20sp"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/notification_icon_1"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/alert"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:id="@+id/distributor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dangerous"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:id="@+id/expense_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="you are in danderous situation"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/expense_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10/02/2025 09:43 PM"
+            android:textSize="14sp"
+            android:textColor="#808080"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D3D3D3"
+        android:layout_below="@id/notification_1"/>
+
+    <LinearLayout
+        android:id="@+id/notification_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:orientation="vertical"
+        android:padding="16dp"
+
         />
+
+    <TextView
+        android:id="@+id/payment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="!Warning"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"/>
+
+        <ImageView
+            android:id="@+id/notification_icon_2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/alert" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/payment_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dangerous"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/payment_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please help! i am not in  safe zone"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/payment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10/02/2025 09:41 PM" />
+
+
 
 
 </FrameLayout>
+
