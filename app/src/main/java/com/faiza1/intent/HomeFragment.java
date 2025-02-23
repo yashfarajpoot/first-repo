@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeFragment extends Fragment {
-   private LinearLayout box1,box2,box3,box4;
+   private LinearLayout box1,box2,box3,box4,box5;
 Button btnActivate;
 
 
@@ -29,6 +29,7 @@ Button btnActivate;
         box2 = view.findViewById(R.id.tv_box2);
         box3 = view.findViewById(R.id.tv_box3);
         box4 = view.findViewById(R.id.tv_box4);
+        box5 = view.findViewById(R.id.tv_box5);
         btnActivate = view.findViewById(R.id.btn_activate);
 
         btnActivate.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +72,15 @@ Button btnActivate;
         box4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle click for Contact
+                Intent intent = new Intent(getActivity() ,  AddContactActivity.class);
+                startActivity(intent);
+            }
+        });
+        box5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity() ,  LinksListActivity.class);
+                startActivity(intent);
             }
         });
 
