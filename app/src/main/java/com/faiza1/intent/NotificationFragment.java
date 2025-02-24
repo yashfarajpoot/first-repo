@@ -27,7 +27,7 @@ public class NotificationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_notification, container, false);
-        TextView  setting = view.findViewById(R.id.tv_setting);
+
    return  view;
 
     }

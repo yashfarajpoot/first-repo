@@ -6,14 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     android:layout_margin="10dp"
     >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add User"
-        android:textSize="30sp"
+
         android:gravity="center"
+        style="@style/HeadingText"
         android:textColor="@color/black"
         />
 
@@ -38,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="abc@gmail.com"
-                android:textColor="@color/purple"
+                android:textColor="@color/Purple"
                 android:textSize="20sp" />
         </LinearLayout>
         <Button
@@ -72,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="xyz@gmail.com"
-                android:textColor="@color/red"
+                android:textColor="@color/Purple"
                 android:textSize="20sp" />
         </LinearLayout>
         <Button
@@ -106,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="abc@gmail.com"
-                android:textColor="@color/pink"
+                android:textColor="@color/Purple"
                 android:textSize="20sp" />
         </LinearLayout>
         <Button
