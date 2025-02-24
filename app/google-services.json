@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1052213479382",
+    "project_id": "womansecurityapp-fe60e",
+    "storage_bucket": "womansecurityapp-fe60e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052213479382:android:1b0489c642767d308b4677",
+        "android_client_info": {
+          "package_name": "com.faiza1.intent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCSpxbeZ6GfYfM4SuHKVOGHnL6kdPR4q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
