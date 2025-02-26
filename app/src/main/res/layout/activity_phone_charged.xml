@@ -22,119 +22,26 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Keeping your phone charged is an essential tip for staying connected and ensuring you have access to help in an emergency. Here’s a more detailed:-"
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1:  Make it a habit to charge your phone every night so it's fully charged when you wake up. This prevents running out of battery unexpectedly."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="2:  If you’re using your phone heavily throughout the day, top up the charge whenever you can. Even a short charge will help extend battery life."
-        android:textSize="24sp"
-        android:layout_marginTop="4dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="3: Carrying a portable power bank ensures that you can recharge your phone while on the go. Choose a portable charger with a higher capacity (mAh), so you can charge your phone multiple times if necessary."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="4:  Don’t forget to keep the power bank itself charged so it’s ready to use when you need it."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="5:  Look for a charger that’s compact and light enough to fit into your bag or pocket, so it’s easy to carry."
+        android:text="1.Keeping your phone charged is an essential tip for staying connected and ensuring you have access to help in an emergency."
         android:textSize="23sp"
-        android:layout_marginTop="4dp"/>
-
+        android:layout_margin="10dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="6:  If you spend a lot of time in your car, a car charger is a convenient way to ensure your phone remains charged."
-        android:textSize="25sp"
-        android:layout_marginTop="4dp"/>
+        android:text="2.Make it a habit to charge your phone every night so it's fully charged when you wake up. This prevents running out of battery unexpectedly."
+        android:textSize="23sp"
+        android:layout_margin="10dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="7:  Consider getting a car charger with multiple USB ports, allowing you to charge multiple devices at once if needed."
-        android:textSize="24sp"
+        android:text="3. If you’re using your phone heavily throughout the day, top up the charge whenever you can. Even a short charge will help extend battery life."
+        android:textSize="23sp"
         android:layout_margin="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="8:  Most smartphones have built-in battery-saving features. Enabling these features can help conserve battery life, especially when you’re low on charge or need to make it last longer."
-        android:textSize="24sp"
+        android:text="4.Carrying a portable power bank ensures that you can recharge your phone while on the go."
+        android:textSize="23sp"
         android:layout_margin="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" - For Android:-> Go to Settings  Battery and (activate Battery Saver) or (Power Saving Mode)."
-        android:textSize="24sp"
-        android:layout_margin="3dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="9:  Turn off Bluetooth, Wi-Fi, or GPS when you're not using them to conserve battery power."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="10: Lowering your screen brightness or enabling (Auto-Brightness) can extend battery life."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="11:  Always keep a spare charging cable with you in your bag, car, or work space."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="12:  Wireless charging pads offer a convenient option, especially in places like your home, office, or car."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="13: If you're out in nature or somewhere where electricity might not be available, solar-powered chargers can be a great option. These chargers use solar panels to generate power, which you can use to charge your phone or other devices."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="14:  Look for lightweight, foldable solar chargers that can fit in your backpack. Make sure the solar charger has a sufficient battery storage capacity to charge your phone multiple times."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="17:  In iPhones and Android devices, apps often refresh content in the background. Turn off Background App Refresh for apps that don’t need to update in real-time."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="18:  If you’re using an app frequently, check its settings for battery optimization options. Many apps allow you to adjust settings to minimize their impact on battery life. "
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-
-
 </LinearLayout>

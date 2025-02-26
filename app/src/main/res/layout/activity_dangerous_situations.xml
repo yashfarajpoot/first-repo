@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Avoid dangerous situation"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:drawableEnd="@drawable/dangeroussituation"
@@ -23,161 +23,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Avoiding dangerous situations is a proactive way to stay safe. Here are some detailed safety tips to help you identify and steer clear of risky situations:"
-        android:textSize="24sp"/>
+        android:text="1.Avoiding dangerous situations is a proactive way to stay safe."
+        android:textSize="23sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-        android:text="1:  Always stay aware of the people and environment around you. This means scanning your surroundings when walking, especially in unfamiliar areas or places with low visibility."
-        android:textSize="24sp"
-       />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="2:  If something feels off or you sense danger, listen to your gut. Instincts are often your subconscious picking up on subtle signs of danger."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="3:  Don’t let your phone, headphones, or other distractions keep you from noticing potential threats. Focus on what’s happening around you."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="4:  Before heading to a new place, research the area. Know the safest routes and avoid shortcuts through poorly lit, isolated, or unfamiliar areas."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="5:  Always let a friend, family member, or colleague know where you are going and when you expect to return. If plans change, keep them updated."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="6:  In case of emergency, know where the nearest exits are, or have an alternative route or place to go for safety."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="7:  Some areas are more prone to criminal activity or other risks (e.g., poorly lit streets, isolated areas, alleyways). Avoid walking alone at night in these areas, or take public transportation instead."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="8:  If you’re in a city or unfamiliar area, research local crime trends to avoid neighborhoods or streets known for safety concerns."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="9:  If you notice someone behaving erratically, aggressively, or intoxicated, avoid interacting with them. Walk away or find a safe space."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="10:  There’s safety in numbers. Whether you're out at night, walking through a park, or commuting, traveling with friends or in groups can reduce your chances of being targeted by criminals."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="11:  Especially in unfamiliar or poorly lit areas, it's safer to walk with others. If you must walk alone, be aware of your surroundings, and carry your phone with you."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="12:  If you sense a situation turning dangerous, stay calm. Panic can cloud your judgment and make you more vulnerable."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="13:  If confronted by an aggressive individual, try to stay non-confrontational and avoid escalating the situation. Use calm body language, and speak in a low, steady tone."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="14:  Avoid sharing too much personal information with strangers. This includes details about where you live, your daily schedule, or where you’ll be at a certain time."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="15:  Be cautious about the information you share online, especially on social media. Posting your location in real-time or announcing you're home alone can make you a target for criminals."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="16:  Many smartphones have location-sharing features. Consider sharing your location with trusted friends or family when traveling or heading out to potentially risky places."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="17:  Install safety apps like (bSafe) or (Life360) that allow you to send distress signals, share your location, or alert others if you're in danger."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="18:  Some people use small tracking devices on keys, bags, or clothing to help locate them if they get lost or need assistance."
         android:layout_margin="10dp"
-        android:textSize="24sp"/>
+        android:text="2.Always stay aware of the people and environment around you."
+        android:textSize="23sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="19:  If you’re in a vulnerable situation (e.g., car breakdown, getting lost), it’s okay to decline offers of help from strangers. Instead, contact someone you trust or seek help from a public place like a gas station or store."
+        android:text="3.If something feels off or you sense danger, listen to your gut."
+        android:textSize="23sp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4.Don’t let your phone, headphones, keep you from noticing potential threats."
         android:textSize="24sp"
         android:layout_margin="10dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="20:  If you need a ride, use well-known rideshare apps like Uber or Lyft instead of accepting rides from strangers, which could be risky."
-        android:textSize="24sp"
+        android:text="5.Always let a friend, family member, or colleague know where you are going and when you expect to return. If plans change, keep them updated."
+        android:textSize="23sp"
         android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="21: Pay attention to people's body language. Signs of potential aggression or manipulation can include clenched fists, excessive sweating, nervous movements, or a sudden change in tone or pace."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="22:  Be wary of people who try to pressure you into making quick decisions or acting without thinking. Scammers often use manipulation or intimidation to catch you off guard."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="23:  In crowded areas or when encountering strangers, try to maintain an appropriate distance. This creates a buffer in case a situation escalates."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="24:  In some situations, someone may try to invade your personal space as a tactic to intimidate or control you. If someone is standing too close or touching you inappropriately, step back and assert your space."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="25:  Consider carrying personal safety tools such as pepper spray, a whistle, or a personal alarm. Know how to use them before you need them."
-        android:textSize="24sp"
-        android:layout_margin="10dp"/>
-
 </LinearLayout>
