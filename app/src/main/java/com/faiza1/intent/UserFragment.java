@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class UserFragment extends Fragment {
 
     public UserFragment() {
@@ -37,12 +39,10 @@ public class UserFragment extends Fragment {
 
                 showLogoutConfirmationDialog();
 
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-
             }
 
         });
+/*
         View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +69,7 @@ public class UserFragment extends Fragment {
 
             }
         });
+*/
 
         return view;
     }
@@ -81,8 +82,13 @@ public class UserFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Perform logout action
+                        FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(getActivity(), MainActivity.class); // Redirect to MainActivity
                         startActivity(intent);
+
+                        if(getActivity()!= null)
+                            getActivity().finish();
+
                         Toast.makeText(getActivity(), "Logout successfully", Toast.LENGTH_LONG).show();
                     }
                 })

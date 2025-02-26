@@ -12,22 +12,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.arch.core.executor.ArchTaskExecutor;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-   TextInputEditText editTextEmail;
+    TextInputEditText editTextEmail;
     TextInputEditText editTextPassword;
     TextView tvSignup;
-    Button  btnSignin;
+    Button btnSignin;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_main);
-        editTextEmail=findViewById(R.id.edt_email);
+        setContentView(R.layout.activity_main);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        editTextEmail = findViewById(R.id.edt_email);
         editTextPassword = findViewById(R.id.edt_password);
         btnSignin = findViewById(R.id.btn_signin);
         tvSignup = findViewById(R.id.tv_signup);
@@ -65,11 +78,27 @@ public class MainActivity extends AppCompatActivity {
 
                     return;
                 }
-                Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-                startActivity(intent);
+
+                FirebaseAuth.getInstance()
+                        .signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else {
+                                    Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+
             }
 
-            });
+        });
 
     }
 }

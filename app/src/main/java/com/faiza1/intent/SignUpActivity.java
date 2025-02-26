@@ -10,12 +10,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -82,6 +87,23 @@ public class SignUpActivity extends AppCompatActivity {
 
                     return;
                 }
+
+                FirebaseAuth.getInstance()
+                        .createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else {
+                                    Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
 
             }
         });
