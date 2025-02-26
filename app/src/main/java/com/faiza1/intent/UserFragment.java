@@ -9,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserFragment extends Fragment {
+
 
     public UserFragment() {
         // Required empty public constructor
@@ -22,17 +24,20 @@ public class UserFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String email = "adhsja";
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_user, container, false); // Ensure layout name matches
 
-        // Find the logout button
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
+
+
         Button btnLogOut = view.findViewById(R.id.btn_logout);
+        TextView edtEmail = view.findViewById(R.id.edt_email);
 
+        edtEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,34 +47,7 @@ public class UserFragment extends Fragment {
             }
 
         });
-/*
-        View.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Confirmation Title")
-                        .setMessage("Are you sure you want to do this?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getActivity(), "User pressed Yes", Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
 
-                // Show the dialog
-                builder.show();
-
-            }
-        });
-*/
 
         return view;
     }

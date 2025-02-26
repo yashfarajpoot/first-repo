@@ -2,6 +2,7 @@ package com.faiza1.intent;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -62,6 +63,9 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String name = editTextName.getText().toString();
+                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(intent);
+
 
 
                 if (name.isEmpty()) {
@@ -72,10 +76,13 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 if (email.isEmpty()) {
+
                     Toast.makeText(SignUpActivity.this, "Please enter Email", Toast.LENGTH_LONG).show();
                     Log.e("onclick", email);
                     return;
                 }
+
+
                 if (password.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Please enter password", Toast.LENGTH_LONG).show();
                     Log.e("onclick", password);
