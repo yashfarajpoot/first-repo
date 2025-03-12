@@ -1,4 +1,4 @@
-package com.faiza1.intent;
+package com.faiza1.intent.model;
 
 public class User {
     private String name;
