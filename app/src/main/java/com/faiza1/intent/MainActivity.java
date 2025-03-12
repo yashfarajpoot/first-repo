@@ -21,6 +21,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     TextInputEditText editTextEmail;
@@ -39,6 +43,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
+//        FirebaseDatabase.getInstance().getReference("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                for(DataSnapshot userSnap : snapshot.getChildren()){
+//                    Log.e( "onDataChange: ", userSnap.child("name").getValue()+" "+userSnap.child("age").getValue());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//                Log.e( "onCancelled: ", error.getMessage());
+//            }
+//        });
 
         editTextEmail = findViewById(R.id.edt_email);
         editTextPassword = findViewById(R.id.edt_password);
