@@ -17,6 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.faiza1.intent.dao.UserDAO;
 import com.faiza1.intent.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -110,10 +111,11 @@ public class SignUpActivity extends AppCompatActivity {
                                     User user  = new User();
                                     user.setName(name);
 
+                                    new UserDAO().saveUser(user);
 
-                                    FirebaseDatabase.getInstance().getReference("Users")
-                                            .child(FirebaseAuth.getInstance().getUid())
-                                            .setValue(user);
+//                                    FirebaseDatabase.getInstance().getReference("Users")
+//                                            .child(FirebaseAuth.getInstance().getUid())
+//                                            .setValue(user);
 
                                     Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
                                     startActivity(intent);
