@@ -54,7 +54,7 @@ public class UserFragment extends Fragment {
             @Override
             public void onData(User user) {
                 tvName.setText(user.getName());
-            
+
             }
 
             @Override
