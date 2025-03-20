@@ -3,155 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_margin="10dp"
     android:padding="10dp"
     tools:context=".NotificationFragment"
     android:orientation="vertical">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notifications"
+        android:text="Notification"
         android:textSize="25sp"
         android:padding="16dp"
         android:background="#F31E054B"
-        android:textColor="@color/white" />
-
-    <LinearLayout
+        android:textColor="@color/white"
+      android:gravity="center"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tv_notification"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-
-        android:elevation="4dp"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f0f0f0"
-            android:orientation="vertical"
-            android:padding="12dp"
-             >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="!Alert:"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/alert" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dangerous"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="You are in a dangerous situation"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10/02/2025 09:43 PM"
-                android:textSize="14sp"
-                android:textColor="#808080"
-                android:layout_gravity="end"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/notification_list_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp"
-            android:background="#f0f0f0"
-            android:layout_marginTop="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="!Alert:"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/alert" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dangerous"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Please help! I am not in a safe zone"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10/02/2025 09:41 PM"
-                android:textSize="14sp"
-                android:textColor="#808080"
-                android:layout_gravity="end"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>
 
