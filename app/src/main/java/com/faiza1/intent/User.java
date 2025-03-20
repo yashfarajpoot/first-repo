@@ -1,5 +1,6 @@
 package com.faiza1.intent;
 
-public class Link {
+public class User {
+
     public String name, email;
 }
