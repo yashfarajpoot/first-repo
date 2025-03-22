@@ -10,9 +10,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlertContactActivity2 extends AppCompatActivity {
     Button btnAdd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +25,35 @@ public class AlertContactActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_alert_contact);
 
         btnAdd = findViewById(R.id.btn_add);
-        ImageView imageView = findViewById(R.id.delete_icon);
-        ImageView imageView1 = findViewById(R.id.delete_icon_2);
-        ImageView imageView2 = findViewById(R.id.delete_icon_3);
+
+        RecyclerView rvAlertContacts = findViewById(R.id.rv_alertcontact);
+
+        List<AlertContact> alertContactList = new ArrayList<>();
+
+        AlertContact alertContact = new AlertContact();
+        alertContact.name = "Ahmad";
+        alertContact.number = "0301-1216728";
+
+
+
+        AlertContact alertContact2 = new AlertContact();
+        alertContact2.name = "Fahad";
+        alertContact2.number = "0309-6500900";
+
+
+
+        AlertContact alertContact3 = new AlertContact();
+        alertContact3.name = "Waleed";
+        alertContact3.number = "0300-1216728";
+
+        alertContactList.add(alertContact);
+        alertContactList.add(alertContact2);
+        alertContactList.add(alertContact3);
+
+       AlertContactAdapter adapter = new AlertContactAdapter(alertContactList);
+        rvAlertContacts.setAdapter(adapter);
+
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,34 +63,6 @@ public class AlertContactActivity2 extends AppCompatActivity {
             }
         });
 
-        // Function to show confirmation dialog
-        View.OnClickListener deleteConfirmationListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(AlertContactActivity2.this);
-                builder.setTitle("Confirmation")
-                        .setMessage("Are you sure you want to delete this?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
-                                Toast.makeText(AlertContactActivity2.this, "Deleted successfully", Toast.LENGTH_LONG).show();
-                                dialog.dismiss();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                builder.show();
-            }
-        };
 
-        // Set confirmation dialog for all delete icons
-        imageView.setOnClickListener(deleteConfirmationListener);
-        imageView1.setOnClickListener(deleteConfirmationListener);
-        imageView2.setOnClickListener(deleteConfirmationListener);
     }
 }
