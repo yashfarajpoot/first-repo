@@ -7,15 +7,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.faiza1.intent.model.User;
+
 import java.util.List;
 
 public class LinkAdapter extends RecyclerView.Adapter<LinkViewHolder>{
 
-    List<Link> Links;
+    List<User> links;
 
-    public LinkAdapter(List<Link> links){
+    public LinkAdapter(List<User> links) {
 
-        this.Links = links ;
+        this.links = links;
     }
     @NonNull
     @Override
@@ -27,14 +29,14 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull LinkViewHolder holder, int position) {
 
-         Link person =  Links.get(position);
-        holder.tvEmail.setText(person.email);
-        holder.tvName.setText(person.name);
+        User person = links.get(position);
+        holder.tvEmail.setText(person.getEmail());
+        holder.tvName.setText(person.getName());
     }
 
     @Override
     public int getItemCount() {
-        return  Links.size();
+        return links.size();
     }
 }
 

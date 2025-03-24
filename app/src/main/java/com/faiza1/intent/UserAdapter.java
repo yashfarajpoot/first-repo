@@ -8,6 +8,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.faiza1.intent.model.User;
+
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
@@ -28,12 +30,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
 
         User user =  Users.get(position);
-        holder.rvEmail.setText(user.email);
-        holder.rvName.setText(user.name);
+        holder.rvEmail.setText(user.getEmail());
+        holder.rvName.setText(user.getName());
         holder.btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), user.name + " Added Successfully!", Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), user.getName() + " Added Successfully!", Toast.LENGTH_LONG).show();
             }
         });
     }
