@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.faiza1.intent.dao.UserDAO;
 import com.faiza1.intent.model.User;
@@ -103,6 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     user.setEmail(email);
 
                                     new UserDAO().saveUser(user);
+
 
 //                                    FirebaseDatabase.getInstance().getReference("Users")
 //                                            .child(FirebaseAuth.getInstance().getUid())

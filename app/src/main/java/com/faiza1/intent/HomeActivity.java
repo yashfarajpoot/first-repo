@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -19,6 +21,9 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
         loadFragment(new HomeFragment());
+
+        FirebaseMessaging.getInstance().subscribeToTopic("broadcast");
+        FirebaseMessaging.getInstance().subscribeToTopic(FirebaseAuth.getInstance().getUid());
 
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
