@@ -31,9 +31,9 @@ public class NotificationFragment extends Fragment {
 
 
         Notification notification = new Notification();
-        notification.heading = "Alert";
+
         notification.title = "Dangerous";
-        notification.msg = "I am not safe!";
+        notification.body = "I am not safe!";
         notification.date = "10/02/2025 09:43 PM";
 
         notificationList.add(notification);
