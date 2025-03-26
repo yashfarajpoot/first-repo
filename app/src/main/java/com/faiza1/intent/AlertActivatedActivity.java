@@ -29,7 +29,15 @@ public class AlertActivatedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Panic button logic here
+                NotificationData data = new NotificationData(
+                        "cAhwdWCnPnPYVbojxQr8O2vPKBw1",
+                        "Panic",
+                        "this is the panic alert body"
+                );
+                NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
                 handlePanicButtonClick();
+
+
             }
         });
     }
@@ -46,7 +54,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
         }
 
         // Show a message or perform other actions
-        Toast.makeText(this, "Panic button clicked!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Panic button clicked!", Toast.LENGTH_SHORT).show();
     }
 
     private void sendSMS() {

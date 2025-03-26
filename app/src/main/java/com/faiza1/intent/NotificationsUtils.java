@@ -6,9 +6,15 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import java.util.Random;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NotificationsUtils {
 
@@ -37,5 +43,36 @@ public class NotificationsUtils {
         Notification notification = notificationBuilder.build();
         int id = new Random(System.currentTimeMillis()).nextInt(1000);
         notificationManager.notify(id, notification);
+    }
+
+    public static void sendNotification(Context context, NotificationData notificationData){
+        ApiService apiService = RetrofitClient.getApiService();
+
+        apiService.sendNotification(notificationData).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+
+                if (response.isSuccessful()) {
+                    try (ResponseBody body = response.body()){
+                        String jsonResponse = body.string();
+                        MyUtil.showToast(context, jsonResponse);
+                    } catch (Exception e) {
+                        MyUtil.showToast( context, "Error reading response: "+e.getMessage());
+                    }
+                } else {
+                    try (ResponseBody errorBody = response.errorBody()){
+                        String errorResponse = errorBody.string();
+                        MyUtil.showToast( context, errorResponse);
+                    } catch (Exception e) {
+                        MyUtil.showToast( context, "Error reading error response: "+ e.getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                MyUtil.showToast(context, t.getMessage());
+            }
+        });
     }
 }

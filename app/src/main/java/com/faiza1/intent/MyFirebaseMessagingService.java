@@ -4,6 +4,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.faiza1.intent.dao.NotificationDAO;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -20,7 +23,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Map<String, String> map = remoteMessage.getData();
         Log.e("onMessageReceived: ", map.toString());
 
-        NotificationsUtils.showNotification(getApplicationContext(), map.get("title"), map.get("body"));
+        String title = map.get("title");
+        String body = map.get("body");
+        NotificationsUtils.showNotification(getApplicationContext(), title, body);
+        String uid = FirebaseAuth.getInstance().getUid();
+
+        if(uid != null){
+            new NotificationDAO().saveNotification(title, body);
+        }
 
 //        if (remoteMessage.getNotification() != null) {
 //            map = new HashMap<>();
