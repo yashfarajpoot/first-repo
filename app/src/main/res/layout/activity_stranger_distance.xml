@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_margin="10dp"
-        android:text="1.If a stranger is getting too close and making you uncomfortable, take a step back or move aside."
+        android:text="1.If a stranger is getting too close and making you uncomfortable, take a step back or move aside.\n\n2.Stand confidently and avoid looking nervous, as it can make you seem like an easy target."
 />
     <TextView
         android:layout_width="match_parent"

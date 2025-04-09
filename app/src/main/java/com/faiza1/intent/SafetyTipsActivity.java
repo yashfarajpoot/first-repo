@@ -35,6 +35,8 @@ public class SafetyTipsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safety_tips);
+
+        //recycler
         btnLocation = findViewById(R.id.btn_location);
         btnEmergency=findViewById(R.id.btn_emergency);
         btnWellLitAreas=findViewById(R.id.btn_well_lit_areas);

@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.faiza1.intent.model.Notification;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,13 @@ public class NotificationFragment extends Fragment {
 
         List<Notification> notificationList = new ArrayList<>();
 
+
+        //load notification from DB
+
+        //remove all
+//        FirebaseDatabase.getInstance().getReference("Notifications")
+//                .child(FirebaseAuth.getInstance().getUid())
+//                .setValue(null);
 
         Notification notification = new Notification();
 
