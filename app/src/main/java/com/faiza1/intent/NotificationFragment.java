@@ -27,24 +27,22 @@ public class NotificationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
 
         RecyclerView tvNotification = view.findViewById(R.id.tv_notification);
 
         List<Notification> notificationList = new ArrayList<>();
 
-<<<<<<< Updated upstream
 
-        //load notification from DB
+
+
 
         //remove all
 //        FirebaseDatabase.getInstance().getReference("Notifications")
 //                .child(FirebaseAuth.getInstance().getUid())
 //                .setValue(null);
 
-=======
->>>>>>> Stashed changes
         Notification notification = new Notification();
         notification.title = "Dangerous";
         notification.body = "I am not safe!";
