@@ -29,12 +29,12 @@ public class AlertActivatedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Panic button logic here
-                NotificationData data = new NotificationData(
-                        "cAhwdWCnPnPYVbojxQr8O2vPKBw1",
-                        "Panic",
-                        "this is the panic alert body"
-                );
-                NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
+//                NotificationData data = new NotificationData(
+//                        "cAhwdWCnPnPYVbojxQr8O2vPKBw1",
+//                        "Panic",
+//                        "this is the panic alert body"
+//                );
+//                NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
                 handlePanicButtonClick();
 
 

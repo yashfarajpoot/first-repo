@@ -1,29 +1,28 @@
 package com.faiza1.intent;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class AddUserActivity extends AppCompatActivity {
+public class AlertContactsActivity extends AppCompatActivity {
     Button btnadd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user);
+        setContentView(R.layout.activity_alert_contacts);
 
-        RecyclerView rvUser = findViewById(R.id.rv_user);
+        RecyclerView rvContacts = findViewById(R.id.rv_contacts);
+        Button btnAdd = findViewById(R.id.btn_add);
+
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
 //        List<User> userList = new ArrayList<>();

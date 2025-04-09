@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
@@ -30,7 +34,7 @@
             android:name=".AlertContactActivity2"
             android:exported="false" />
         <activity
-            android:name=".AddUserActivity"
+            android:name=".AlertContactsActivity"
             android:exported="false" />
         <activity
             android:name=".AlertActivatedActivity"

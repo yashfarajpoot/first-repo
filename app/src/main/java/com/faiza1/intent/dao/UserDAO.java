@@ -37,10 +37,7 @@ public class UserDAO {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-
                 callback.onData(user);
-
-                Log.e("onDataChange: ", user.getName() + " ");
             }
 
             @Override

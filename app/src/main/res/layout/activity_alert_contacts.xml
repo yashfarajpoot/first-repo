@@ -10,16 +10,23 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add User"
+        android:text="Alert Contacts"
         style="@style/HeadingText"
         android:gravity="center"
         />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_user"
+        android:id="@+id/rv_contacts"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp"
         tools:listitem="@layout/add_user_list"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Add Contact"/>
 
 </LinearLayout>

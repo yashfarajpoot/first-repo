@@ -85,7 +85,9 @@ public class UserFragment extends Fragment {
         new UserDAO().getUser(new DataCallback<>() {
             @Override
             public void onData(User user) {
-                tvName.setText(user.getName());
+                if(user!= null){
+                    tvName.setText(user.getName());
+                }
             }
 
             @Override
