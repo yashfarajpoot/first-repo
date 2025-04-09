@@ -20,10 +20,10 @@ public class EmergencyActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency2);
 
- ImageView tvPHP = findViewById(R.id.tv_php);
- ImageView tvEdhi = findViewById(R.id.tv_edhi);
-    ImageView  tvPolice = findViewById(R.id.tv_police);
-        ImageView   tvRescue = findViewById(R.id.tv_rescue);
+        ImageView tvPHP = findViewById(R.id.tv_php);
+        ImageView tvEdhi = findViewById(R.id.tv_edhi);
+        ImageView tvPolice = findViewById(R.id.tv_police);
+        ImageView tvRescue = findViewById(R.id.tv_rescue);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             // If permission is granted, proceed with calling
 
