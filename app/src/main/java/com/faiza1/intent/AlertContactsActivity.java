@@ -1,24 +1,38 @@
 package com.faiza1.intent;
 
+import static java.security.AccessController.getContext;
+
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.WriterException;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanIntentResult;
+import com.journeyapps.barcodescanner.ScanOptions;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 public class AlertContactsActivity extends AppCompatActivity {
+
+    private ActivityResultLauncher<Intent> scanQrResultLauncher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +42,30 @@ public class AlertContactsActivity extends AppCompatActivity {
         Button btnAdd = findViewById(R.id.btn_add);
         Button btnAddMe = findViewById(R.id.btn_add_me);
 
+        scanQrResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                resultData ->{
+                    if (resultData.getResultCode() == RESULT_OK) {
+                        ScanIntentResult result = ScanIntentResult.parseActivityResult(resultData.getResultCode(), resultData.getData());
+
+                        //this will be qr activity result
+                        if (result.getContents() == null) {
+                            Toast.makeText(AlertContactsActivity.this, "Error ayu reee", Toast.LENGTH_LONG).show();
+
+                        } else {
+                            String qrContents = result.getContents();
+                            Toast.makeText(this, qrContents, Toast.LENGTH_SHORT).show();
+                            Log.e( "qr-re: ", qrContents);
+                            //TODO Handle qr result here
+                        }
+                    }
+                });
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                scanQrResultLauncher.launch(new ScanContract().createIntent(AlertContactsActivity.this, new ScanOptions()));
             }
         });
         btnAddMe.setOnClickListener(new View.OnClickListener() {
@@ -93,4 +127,18 @@ public class AlertContactsActivity extends AppCompatActivity {
 //        rvUser.setAdapter(adapter);
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                // You can use result.getContents() to process scanned data
+            }
+        }
+    }
+
 }
