@@ -49,11 +49,14 @@ public class MyUtil {
         }
     }
 
-    public static Bitmap base64ToImage(String base64String){
-        byte[] imageBytes = Base64.decode(base64String, Base64.DEFAULT);
-        return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+
+
+    public static Bitmap base64ToBitmap(String base64Str) {
+        byte[] decodedBytes = Base64.decode(base64Str, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 }
+
 
 
 

@@ -2,8 +2,8 @@ package com.faiza1.intent;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,7 +19,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.faiza1.intent.callback.DataCallback;
@@ -65,11 +64,6 @@ public class UserFragment extends Fragment {
                     });
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -81,11 +75,14 @@ public class UserFragment extends Fragment {
         TextView edtEmail = view.findViewById(R.id.edt_email);
         TextView tvName = view.findViewById(R.id.tv_name);
 
+        // ✅ Load image from Firebase
+        loadUserImageFromFirebase();
+
         // Show user name from Firebase
         new UserDAO().getUser(new DataCallback<>() {
             @Override
             public void onData(User user) {
-                if(user!= null){
+                if (user != null) {
                     tvName.setText(user.getName());
                 }
             }
@@ -102,10 +99,31 @@ public class UserFragment extends Fragment {
         // Logout button
         btnLogOut.setOnClickListener(v -> showLogoutConfirmationDialog());
 
-        // When icon is clicked, show custom dialog
+        // Show dialog on icon click
         btnicon.setOnClickListener(v -> showImageOptionsDialog());
 
         return view;
+    }
+
+    private void loadUserImageFromFirebase() {
+        String authId = FirebaseAuth.getInstance().getUid();
+        FirebaseDatabase.getInstance().getReference("UserImages")
+                .child(authId)
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    String base64Image = snapshot.getValue(String.class);
+                    if (base64Image != null) {
+                        Bitmap bitmap = MyUtil.base64ToBitmap(base64Image);
+                        if (bitmap != null) {
+                            ivPreview.setImageBitmap(bitmap);
+                        } else {
+                            Toast.makeText(getContext(), "Invalid image data", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Failed to load image", Toast.LENGTH_SHORT).show();
+                });
     }
 
     private void showImageOptionsDialog() {
@@ -129,7 +147,6 @@ public class UserFragment extends Fragment {
 
         dialog.show();
     }
-
 
     private void uploadImageToFirebase(Uri uri) {
         String imageString = MyUtil.imageToBase64(uri, requireActivity().getContentResolver());
