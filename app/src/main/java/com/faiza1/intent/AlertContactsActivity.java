@@ -16,15 +16,28 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.faiza1.intent.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.zxing.WriterException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanIntentResult;
 import com.journeyapps.barcodescanner.ScanOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -44,7 +57,7 @@ public class AlertContactsActivity extends AppCompatActivity {
 
         scanQrResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
-                resultData ->{
+                resultData -> {
                     if (resultData.getResultCode() == RESULT_OK) {
                         ScanIntentResult result = ScanIntentResult.parseActivityResult(resultData.getResultCode(), resultData.getData());
 
@@ -55,7 +68,12 @@ public class AlertContactsActivity extends AppCompatActivity {
                         } else {
                             String qrContents = result.getContents();
                             Toast.makeText(this, qrContents, Toast.LENGTH_SHORT).show();
-                            Log.e( "qr-re: ", qrContents);
+                            FirebaseDatabase.getInstance().getReference("AlertContacts")
+                                    .child(FirebaseAuth.getInstance().getUid())
+                                    .child(qrContents)
+                                    .setValue(true);
+
+                            Log.e("qr-re: ", qrContents);
                             //TODO Handle qr result here
                         }
                     }
@@ -80,14 +98,14 @@ public class AlertContactsActivity extends AppCompatActivity {
                 // Setting Bitmap to ImageView
 
                 ImageView imageView = new ImageView(AlertContactsActivity.this);
-                imageView.setPadding(10,10,10,80);
+                imageView.setPadding(10, 10, 10, 80);
                 imageView.setImageBitmap(bitmap);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(AlertContactsActivity.this);
                 builder.setTitle("Add Me")
                         .setMessage("Scan QR code from app to add")
                         .setCancelable(true)
-                                .setView(imageView);
+                        .setView(imageView);
 //                            .setPositiveButton("Yes", (dialog, i) -> {
 //                                alertContacts.remove(position);
 //                                notifyItemRemoved(position);
@@ -99,8 +117,50 @@ public class AlertContactsActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
+        List<User> userList = new ArrayList<>();
+
+        UserAdapter adapter = new UserAdapter(userList);
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+        rvContacts.setAdapter(adapter);
+
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                userList.clear();
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    // If each child is a "User" object:
+                    User user = child.getValue(User.class);
+                    if (user != null) {
+                        // optionally set the uid from the key
+                        userList.add(user);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(AlertContactsActivity.this, "Failed to load users", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
+        //get AlertContacts ids
+       FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+       db.collection("users")
+               .get()
+                .addOnSuccessListener(result -> {
+                   for (DocumentSnapshot doc : result) {
+                   String uid = doc.getId();  // Har user ka UID
+                      Log.d("UID", uid);
+                 }
+               })
+               .addOnFailureListener(error -> {
+                    Log.e("Error", error.getMessage());
+              });
 
 //        List<User> userList = new ArrayList<>();
 //

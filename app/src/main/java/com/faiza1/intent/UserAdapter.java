@@ -12,13 +12,13 @@ import com.faiza1.intent.model.User;
 
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
-    List<User> Users;
+public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
+    List<User> userList;
 
-    public UserAdapter(List<User> users){
-
-        this.Users = users ;
+    public UserAdapter(List<User> userList) {
+        this.userList = userList;
     }
+
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,21 +28,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-
-        User user =  Users.get(position);
+        User user = userList.get(position);
         holder.rvEmail.setText(user.getEmail());
         holder.rvName.setText(user.getName());
-        holder.btnadd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), user.getName() + " Added Successfully!", Toast.LENGTH_LONG).show();
-            }
-        });
+
+        holder.btnadd.setOnClickListener(v ->
+                Toast.makeText(v.getContext(), user.getName() + " Added Successfully!", Toast.LENGTH_LONG).show()
+        );
     }
 
     @Override
     public int getItemCount() {
-        return  Users.size();
+        return userList.size();
     }
 }
 
