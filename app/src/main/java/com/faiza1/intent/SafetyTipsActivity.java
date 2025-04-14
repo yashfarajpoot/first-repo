@@ -5,110 +5,55 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.faiza1.intent.safetytip.AlertTransitActivity;
-import com.faiza1.intent.safetytip.DangerousSituationsActivity;
-import com.faiza1.intent.safetytip.EmergencyContactsActivity;
-import com.faiza1.intent.safetytip.PhoneChargedActivity;
-import com.faiza1.intent.safetytip.SelfDefenseActivity;
-import com.faiza1.intent.safetytip.ShareLocationActivity;
-import com.faiza1.intent.safetytip.StayLitAreasActivity;
-import com.faiza1.intent.safetytip.StrangerDistanceActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SafetyTipsActivity extends AppCompatActivity {
-
-
-    TextView tvHeading;
-    Button btnLocation;
-    Button btnEmergency;
-    Button btnWellLitAreas;
-    Button btnAvoidDangerousSituation;
-    Button  btnPhone;
-    Button btnAlert;
-    Button btnSelf;
-    Button btnDistance;
-
+    TextView myTextView;
+    Button shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safety_tips);
+        myTextView = findViewById(R.id.myTextView);
+        RecyclerView rv_safetytips = findViewById(R.id.rv_safetytips);
 
-        //recycler
-        btnLocation = findViewById(R.id.btn_location);
-        btnEmergency=findViewById(R.id.btn_emergency);
-        btnWellLitAreas=findViewById(R.id.btn_well_lit_areas);
-        btnAvoidDangerousSituation=findViewById(R.id.btn_avoid_dangerous_situation);
-        btnPhone=findViewById(R.id.btn_phone);
-        btnAlert=findViewById(R.id.btn_alert);
-        btnDistance=findViewById(R.id.btn_distance);
-        btnSelf=findViewById(R.id.btn_self);
-        tvHeading=findViewById(R.id.tv_heading);
 
-        btnLocation.setOnClickListener(new View.OnClickListener() {
+        List<Safety> tipList = new ArrayList<>();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("SafetyTips");
+
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, ShareLocationActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnAlert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(SafetyTipsActivity.this, AlertTransitActivity.class);
-                startActivity(intent);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                tipList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Safety tip = snapshot.getValue(Safety.class);
+                    if(tip != null){
+                        tip.setId(snapshot.getKey());
+                    }
+                    tipList.add(tip);
+                }
+                SafetyAdapter adapter = new SafetyAdapter(SafetyTipsActivity.this, tipList);
+                rv_safetytips.setAdapter(adapter);
             }
 
-        });
-
-        btnDistance.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(SafetyTipsActivity.this, StrangerDistanceActivity.class);
-                startActivity(intent);
-            }
-
-        });
-        btnWellLitAreas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, StayLitAreasActivity.class);
-                startActivity(intent);
-            }
-
-        });
-
-        btnSelf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, SelfDefenseActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnEmergency.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, EmergencyContactsActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, PhoneChargedActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnAvoidDangerousSituation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SafetyTipsActivity.this, DangerousSituationsActivity.class);
-                startActivity(intent);
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(SafetyTipsActivity.this, "Failed to load tips.", Toast.LENGTH_SHORT).show();
             }
         });
 
