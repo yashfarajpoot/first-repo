@@ -13,10 +13,10 @@ import java.util.List;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHolder> {
 
-    List<Notification> notifications;
+    List<Notification> notificationList;
 
-    public NotificationAdapter(List<Notification> notifications) {
-        this.notifications = notifications;
+    public NotificationAdapter(List<Notification> notificationList) {
+        this.notificationList = notificationList;
     }
 
     @NonNull
@@ -29,7 +29,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHo
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
 
-        Notification notification = notifications.get(position);
+        Notification notification = notificationList.get(position);
 //        holder.tvHeading.setText(notification.heading);
         holder.tvDate.setText(notification.date);
         holder.tvTitle.setText(notification.title);
@@ -38,7 +38,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHo
 
     @Override
     public int getItemCount() {
-        return notifications.size();
+        return notificationList.size();
     }
 }
 

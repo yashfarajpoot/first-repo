@@ -4,6 +4,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,20 @@ import androidx.appcompat.app.AlertDialog;
 import com.faiza1.intent.model.Notification;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+<<<<<<< Updated upstream
+=======
+import com.google.firebase.database.DatabaseError;
+>>>>>>> Stashed changes
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationFragment extends Fragment {
+
+    private List<Notification> notificationList;
+    private NotificationAdapter adapter;
 
     public NotificationFragment() {
     }
@@ -32,6 +41,7 @@ public class NotificationFragment extends Fragment {
         RecyclerView tvNotification = view.findViewById(R.id.tv_notification);
         tvNotification.setLayoutManager(new LinearLayoutManager(getContext()));
 
+<<<<<<< Updated upstream
         List<Notification> notificationList = new ArrayList<>();
         NotificationAdapter adapter = new NotificationAdapter(notificationList);
         tvNotification.setAdapter(adapter);
@@ -54,6 +64,17 @@ public class NotificationFragment extends Fragment {
                     Toast.makeText(getContext(), "Failed to load notifications", Toast.LENGTH_SHORT).show();
                 });
 
+=======
+
+        notificationList = new ArrayList<>();
+        adapter = new NotificationAdapter(notificationList);
+        tvNotification.setAdapter(adapter);
+
+
+        loadNotifications();
+
+
+>>>>>>> Stashed changes
         ImageView btnDelete = view.findViewById(R.id.tv_delete);
         btnDelete.setOnClickListener(v -> {
             new AlertDialog.Builder(getContext())
@@ -78,4 +99,31 @@ public class NotificationFragment extends Fragment {
 
         return view;
     }
+<<<<<<< Updated upstream
+=======
+
+
+    private void loadNotifications() {
+        FirebaseDatabase.getInstance().getReference("Notifications")
+                .child(FirebaseAuth.getInstance().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        notificationList.clear();
+                        for (DataSnapshot data : snapshot.getChildren()) {
+                            Notification notification = data.getValue(Notification.class);
+                            if (notification != null) {
+                                notificationList.add(notification);  // Add new notifications to the list
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Toast.makeText(getContext(), "Failed to load notifications", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+>>>>>>> Stashed changes
 }

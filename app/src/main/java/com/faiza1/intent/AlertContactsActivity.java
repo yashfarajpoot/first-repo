@@ -106,45 +106,62 @@ public class AlertContactsActivity extends AppCompatActivity {
                         .setMessage("Scan QR code from app to add")
                         .setCancelable(true)
                         .setView(imageView);
-//                            .setPositiveButton("Yes", (dialog, i) -> {
-//                                alertContacts.remove(position);
-//                                notifyItemRemoved(position);
-//                                notifyItemRangeChanged(position, alertContacts.size());
-//                                Toast.makeText(context,"Deleted successfully", Toast.LENGTH_LONG).show();
-//                                dialog.dismiss();
-//                            })
-//                            .setNegativeButton("No", (dialog, which) -> dialog.dismiss());
-                builder.show();
-            }
-        });
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
-        List<User> userList = new ArrayList<>();
+               //              .setPositiveButton("Yes", (dialog, i) -> {
+              //      alertContacts.remove(position);
+               //     notifyItemRemoved(position);
+               //     notifyItemRangeChanged(position, alertContacts.size());
+                //    Toast.makeText(context, "Deleted successfully", Toast.LENGTH_LONG).show();
+                //    dialog.dismiss();
+                })
+                //        .setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+              //  builder.show();
+        //    }
+       });
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference alertContactsRef = FirebaseDatabase.getInstance().getReference("AlertContacts").child(currentUser.getUid());
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
+
+        List<User> userList = new ArrayList<>();
         UserAdapter adapter = new UserAdapter(userList);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
         rvContacts.setAdapter(adapter);
 
-        usersRef.addValueEventListener(new ValueEventListener() {
+        alertContactsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 userList.clear();
-                for (DataSnapshot child : snapshot.getChildren()) {
-                    // If each child is a "User" object:
-                    User user = child.getValue(User.class);
-                    if (user != null) {
-                        // optionally set the uid from the key
-                        userList.add(user);
-                    }
+
+                for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
+                    String contactUid = contactSnapshot.getKey();  // UID of scanned user
+
+                    usersRef.child(contactUid).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot userSnapshot) {
+                            User user = userSnapshot.getValue(User.class);
+                            if (user != null) {
+                                userList.add(user);
+                                adapter.notifyDataSetChanged();  // notify after adding each user
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            Log.e("Error", "Failed to fetch user details");
+                        }
+                    });
                 }
-                adapter.notifyDataSetChanged();
+
+                if (!snapshot.hasChildren()) {
+                    Toast.makeText(AlertContactsActivity.this, "No alert contacts added yet", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Toast.makeText(AlertContactsActivity.this, "Failed to load users", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlertContactsActivity.this, "Failed to load alert contacts", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         //get AlertContacts ids
        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
