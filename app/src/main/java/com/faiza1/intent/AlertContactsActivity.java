@@ -112,10 +112,10 @@ public class AlertContactsActivity extends AppCompatActivity {
                //     notifyItemRangeChanged(position, alertContacts.size());
                 //    Toast.makeText(context, "Deleted successfully", Toast.LENGTH_LONG).show();
                 //    dialog.dismiss();
-                })
+             //   })
                 //        .setNegativeButton("No", (dialog, which) -> dialog.dismiss());
-              //  builder.show();
-        //    }
+               builder.show();
+           }
        });
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
