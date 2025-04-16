@@ -111,20 +111,19 @@ public class AlertContactsActivity extends AppCompatActivity {
                //     notifyItemRemoved(position);
                //     notifyItemRangeChanged(position, alertContacts.size());
                 //    Toast.makeText(context, "Deleted successfully", Toast.LENGTH_LONG).show();
-                 //   dialog.dismiss();
-               // })
+                //    dialog.dismiss();
+                })
                 //        .setNegativeButton("No", (dialog, which) -> dialog.dismiss());
-                builder.show();
-          }
-      });
+              //  builder.show();
+        //    }
+       });
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserId = currentUser.getUid();
         DatabaseReference alertContactsRef = FirebaseDatabase.getInstance().getReference("AlertContacts").child(currentUser.getUid());
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
 
         List<User> userList = new ArrayList<>();
-        UserAdapter adapter = new UserAdapter(userList, currentUserId, AlertContactsActivity.this);
+        UserAdapter adapter = new UserAdapter(userList);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
         rvContacts.setAdapter(adapter);
 
@@ -141,7 +140,6 @@ public class AlertContactsActivity extends AppCompatActivity {
                         public void onDataChange(DataSnapshot userSnapshot) {
                             User user = userSnapshot.getValue(User.class);
                             if (user != null) {
-                                user.setId(contactUid);
                                 userList.add(user);
                                 adapter.notifyDataSetChanged();  // notify after adding each user
                             }
