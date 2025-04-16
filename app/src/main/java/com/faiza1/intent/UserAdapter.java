@@ -57,9 +57,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
                                 .child(contactUid)
                                 .removeValue()
                                 .addOnSuccessListener(unused -> {
-                                    userList.remove(position);
-                                    notifyItemRemoved(position);
-                                    notifyItemRangeChanged(position, userList.size());
+//                                    int currentPosition = holder.getAdapterPosition();
+//                                    userList.remove(position);
+//                                    notifyItemRemoved(position);
+//                                    notifyItemRangeChanged(position, userList.size());
                                     Toast.makeText(context, "Contact removed", Toast.LENGTH_SHORT).show();
                                 })
                                 .addOnFailureListener(e -> {
