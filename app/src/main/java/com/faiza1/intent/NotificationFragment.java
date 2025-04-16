@@ -15,10 +15,9 @@ import androidx.appcompat.app.AlertDialog;
 import com.faiza1.intent.model.Notification;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
-<<<<<<< Updated upstream
-=======
+
 import com.google.firebase.database.DatabaseError;
->>>>>>> Stashed changes
+
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -41,7 +40,7 @@ public class NotificationFragment extends Fragment {
         RecyclerView tvNotification = view.findViewById(R.id.tv_notification);
         tvNotification.setLayoutManager(new LinearLayoutManager(getContext()));
 
-<<<<<<< Updated upstream
+
         List<Notification> notificationList = new ArrayList<>();
         NotificationAdapter adapter = new NotificationAdapter(notificationList);
         tvNotification.setAdapter(adapter);
@@ -64,17 +63,13 @@ public class NotificationFragment extends Fragment {
                     Toast.makeText(getContext(), "Failed to load notifications", Toast.LENGTH_SHORT).show();
                 });
 
-=======
 
-        notificationList = new ArrayList<>();
-        adapter = new NotificationAdapter(notificationList);
-        tvNotification.setAdapter(adapter);
+
 
 
         loadNotifications();
 
 
->>>>>>> Stashed changes
         ImageView btnDelete = view.findViewById(R.id.tv_delete);
         btnDelete.setOnClickListener(v -> {
             new AlertDialog.Builder(getContext())
@@ -99,8 +94,7 @@ public class NotificationFragment extends Fragment {
 
         return view;
     }
-<<<<<<< Updated upstream
-=======
+
 
 
     private void loadNotifications() {
@@ -125,5 +119,5 @@ public class NotificationFragment extends Fragment {
                     }
                 });
     }
->>>>>>> Stashed changes
+
 }

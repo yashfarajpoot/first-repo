@@ -31,10 +31,12 @@
 
             <TextView
                 android:id="@+id/tv_number"
-                android:layout_width="167dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:text="0300-1216743" />
+                android:textSize="15sp"
+                android:text="0300-1216743"
+                android:textColor="@color/black"
+                android:contentDescription="Contact number"/>
         </LinearLayout>
         <ImageView
             android:id="@+id/delete_icon"
