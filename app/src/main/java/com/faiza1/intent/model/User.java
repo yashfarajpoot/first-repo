@@ -25,11 +25,11 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getid() {
+    public String getId() {
         return id;
     }
 
-    public void setid(String id) {
-        this.email = id;
+    public void setId(String id) {
+        this.id = id;
     }
 }

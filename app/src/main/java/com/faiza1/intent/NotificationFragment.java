@@ -1,13 +1,16 @@
 package com.faiza1.intent;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,16 +37,25 @@ public class NotificationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
 
+        // Initialize RecyclerView
         RecyclerView tvNotification = view.findViewById(R.id.tv_notification);
         tvNotification.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
+        // Initialize the notification list and adapter
         notificationList = new ArrayList<>();
         adapter = new NotificationAdapter(notificationList);
         tvNotification.setAdapter(adapter);
 
+
+        // Load notifications from Firebase
         loadNotifications();
+
+        // Delete all notifications on button click
+
 
         ImageView btnDelete = view.findViewById(R.id.tv_delete);
         btnDelete.setOnClickListener(v -> {
@@ -56,8 +68,8 @@ public class NotificationFragment extends Fragment {
                                 .removeValue()
                                 .addOnSuccessListener(unused -> {
                                     Toast.makeText(getContext(), "Notifications deleted", Toast.LENGTH_SHORT).show();
-                                    notificationList.clear();
-                                    adapter.notifyDataSetChanged();
+                                    notificationList.clear();  // Clear the list
+                                    adapter.notifyDataSetChanged();  // Update RecyclerView
                                 })
                                 .addOnFailureListener(e -> {
                                     Toast.makeText(getContext(), "Failed to delete notifications", Toast.LENGTH_SHORT).show();
@@ -71,20 +83,26 @@ public class NotificationFragment extends Fragment {
     }
 
 
+    // Method to load notifications from Firebase
     private void loadNotifications() {
         FirebaseDatabase.getInstance().getReference("Notifications")
                 .child(FirebaseAuth.getInstance().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        notificationList.clear();
+                        notificationList.clear();  // Clear old notifications
+
                         for (DataSnapshot data : snapshot.getChildren()) {
                             Notification notification = data.getValue(Notification.class);
                             if (notification != null) {
+
                                 notificationList.add(notification);
+
+                                notificationList.add(notification);  // Add new notifications
+
                             }
                         }
-                        adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();  // Notify adapter about the data change
                     }
 
                     @Override

@@ -6,43 +6,42 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.faiza1.intent.R;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class AlertActivatedActivity extends AppCompatActivity {
-    Button btnpanicButton;
 
+    Button btnpanicButton;
     CheckBox smsCheckbox, callCheckbox, locationCheckbox;
+
+    FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_activated);
+
         btnpanicButton = findViewById(R.id.btn_panicButton);
         smsCheckbox = findViewById(R.id.smsCheckbox);
         callCheckbox = findViewById(R.id.callCheckbox);
         locationCheckbox = findViewById(R.id.locationCheckbox);
 
+        db = FirebaseFirestore.getInstance();
+
         btnpanicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Panic button logic here
-//                NotificationData data = new NotificationData(
-//                        "cAhwdWCnPnPYVbojxQr8O2vPKBw1",
-//                        "Panic",
-//                        "this is the panic alert body"
-//                );
-//                NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
                 handlePanicButtonClick();
-
-
+                fetchContactsFromFirestore();
             }
         });
     }
+
     private void handlePanicButtonClick() {
-        // Implement actions based on checked checkboxes
         if (smsCheckbox.isChecked()) {
             sendSMS();
         }
@@ -52,24 +51,38 @@ public class AlertActivatedActivity extends AppCompatActivity {
         if (locationCheckbox.isChecked()) {
             getLocation();
         }
-
-        // Show a message or perform other actions
-//        Toast.makeText(this, "Panic button clicked!", Toast.LENGTH_SHORT).show();
     }
 
     private void sendSMS() {
-        // Implement SMS sending logic here
         Toast.makeText(this, "Sending SMS...", Toast.LENGTH_SHORT).show();
     }
 
     private void makeCall() {
-        // Implement call making logic here
         Toast.makeText(this, "Making call...", Toast.LENGTH_SHORT).show();
     }
 
     private void getLocation() {
-        // Implement location retrieval logic here
         Toast.makeText(this, "Getting location...", Toast.LENGTH_SHORT).show();
     }
-}
 
+    private void fetchContactsFromFirestore() {
+        db.collection("contacts")
+                .get()
+                .addOnSuccessListener(new com.google.android.gms.tasks.OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                            String name = document.getString("name");
+                            String phone = document.getString("phone");
+                            Toast.makeText(AlertActivatedActivity.this, "Contact: " + name + " - " + phone, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new com.google.android.gms.tasks.OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        Toast.makeText(AlertActivatedActivity.this, "Failed to fetch contacts: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+}
