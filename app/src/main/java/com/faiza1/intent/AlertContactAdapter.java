@@ -59,9 +59,10 @@ public class AlertContactAdapter extends RecyclerView.Adapter<AlertContactViewHo
                                     .child(contactId)
                                     .removeValue()
                                     .addOnSuccessListener(aVoid -> {
-                                        alertContacts.remove(position);
-                                        notifyItemRemoved(position);
-                                        notifyItemRangeChanged(position, alertContacts.size());
+//                                        alertContacts.remove(position);
+//                                        notifyDataSetChanged();
+//                                        notifyItemRemoved(position);
+//                                        notifyItemRangeChanged(position, alertContacts.size());
                                         Toast.makeText(context, "Deleted successfully", Toast.LENGTH_SHORT).show();
                                     })
                                     .addOnFailureListener(e -> {
