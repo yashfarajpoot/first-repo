@@ -106,17 +106,17 @@ public class AlertContactsActivity extends AppCompatActivity {
                         .setMessage("Scan QR code from app to add")
                         .setCancelable(true)
                         .setView(imageView);
-               //              .setPositiveButton("Yes", (dialog, i) -> {
-              //      alertContacts.remove(position);
-               //     notifyItemRemoved(position);
-               //     notifyItemRangeChanged(position, alertContacts.size());
+                //              .setPositiveButton("Yes", (dialog, i) -> {
+                //      alertContacts.remove(position);
+                //     notifyItemRemoved(position);
+                //     notifyItemRangeChanged(position, alertContacts.size());
                 //    Toast.makeText(context, "Deleted successfully", Toast.LENGTH_LONG).show();
-                 //   dialog.dismiss();
-               // })
+                //   dialog.dismiss();
+                // })
                 //        .setNegativeButton("No", (dialog, which) -> dialog.dismiss());
                 builder.show();
-          }
-      });
+            }
+        });
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = currentUser.getUid();
@@ -166,20 +166,20 @@ public class AlertContactsActivity extends AppCompatActivity {
         });
 
         //get AlertContacts ids
-       FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-       FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-       db.collection("users")
-               .get()
+        db.collection("users")
+                .get()
                 .addOnSuccessListener(result -> {
-                   for (DocumentSnapshot doc : result) {
-                   String uid = doc.getId();  // Har user ka UID
-                      Log.d("UID", uid);
-                 }
-               })
-               .addOnFailureListener(error -> {
+                    for (DocumentSnapshot doc : result) {
+                        String uid = doc.getId();  // Har user ka UID
+                        Log.d("UID", uid);
+                    }
+                })
+                .addOnFailureListener(error -> {
                     Log.e("Error", error.getMessage());
-              });
+                });
 
 //        List<User> userList = new ArrayList<>();
 //
@@ -208,3 +208,4 @@ public class AlertContactsActivity extends AppCompatActivity {
     }
 
 }
+

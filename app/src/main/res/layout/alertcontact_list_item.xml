@@ -33,7 +33,7 @@
                 android:id="@+id/tv_number"
                 android:layout_width="167dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:text="0300-1216743" />
         </LinearLayout>
         <ImageView

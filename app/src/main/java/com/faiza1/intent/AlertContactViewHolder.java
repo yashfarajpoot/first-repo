@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AlertContactViewHolder extends RecyclerView.ViewHolder{
     private View itemView;
     public TextView tvName, tvNumber ;
-  public ImageView  deleteIcon;
+    public ImageView  deleteIcon;
     public AlertContactViewHolder(View itemView) {
         super(itemView);
         this.itemView = itemView;
