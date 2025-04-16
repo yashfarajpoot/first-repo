@@ -11,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.faiza1.intent.model.Notification;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -40,7 +45,9 @@ public class NotificationFragment extends Fragment {
         RecyclerView tvNotification = view.findViewById(R.id.tv_notification);
         tvNotification.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         // Initialize the notification list and adapter
+
         notificationList = new ArrayList<>();
         adapter = new NotificationAdapter(notificationList);
         tvNotification.setAdapter(adapter);
@@ -49,6 +56,8 @@ public class NotificationFragment extends Fragment {
         loadNotifications();
 
         // Delete all notifications on button click
+        loadNotifications();
+
         ImageView btnDelete = view.findViewById(R.id.tv_delete);
         btnDelete.setOnClickListener(v -> {
             new AlertDialog.Builder(getContext())
@@ -74,6 +83,7 @@ public class NotificationFragment extends Fragment {
         return view;
     }
 
+
     // Method to load notifications from Firebase
     private void loadNotifications() {
         FirebaseDatabase.getInstance().getReference("Notifications")
@@ -86,7 +96,11 @@ public class NotificationFragment extends Fragment {
                         for (DataSnapshot data : snapshot.getChildren()) {
                             Notification notification = data.getValue(Notification.class);
                             if (notification != null) {
+
                                 notificationList.add(notification);  // Add new notifications
+
+                                notificationList.add(notification);
+
                             }
                         }
                         adapter.notifyDataSetChanged();  // Notify adapter about the data change
