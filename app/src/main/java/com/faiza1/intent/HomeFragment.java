@@ -1,20 +1,42 @@
 package com.faiza1.intent;
 
+ import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+ import android.location.Location;
+ import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
+ import android.os.Looper;
+ import android.provider.Settings;
+ import android.util.Log;
+ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
+ import com.google.android.gms.location.LocationCallback;
+ import com.google.android.gms.location.LocationRequest;
+ import com.google.android.gms.location.LocationResult;
+ import com.google.android.gms.location.Priority;
 
 public class HomeFragment extends Fragment {
-   private LinearLayout box1,box2,box3,box4,box5;
-Button btnActivate;
+    private LinearLayout box1, box2, box3, box4, box5;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 101;
+    private static final int GPS_REQUEST_CODE = 102;
 
+    Button btnActivate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,59 +51,129 @@ Button btnActivate;
         box5 = view.findViewById(R.id.tv_box5);
         btnActivate = view.findViewById(R.id.btn_activate);
 
-        btnActivate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity() , AlertActivatedActivity.class);
-                startActivity(intent);
+        btnActivate.setOnClickListener(v -> {
+            if (hasLocationPermission()) {
+                if (isLocationEnabled()) {
+                    startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
+                } else {
+                    promptToEnableGPS();
+                }
+            } else {
+                requestLocationPermission();
             }
         });
 
-
-
-
-        box1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity() ,  SafetyTipsActivity.class );
-                startActivity(intent);
-            }
-        });
-
-        box2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle click for Contact
-                Intent intent = new Intent(getActivity() , AlertContactActivity2.class);
-                startActivity(intent);
-            }
-        });
-        box3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle click for Contact
-                Intent intent = new Intent(getActivity() ,  EmergencyActivity2.class);
-                startActivity(intent);
-            }
-        });
-        box4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity() ,  AlertContactsActivity.class);
-                startActivity(intent);
-            }
-        });
-        box5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity() ,  LinksListActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        box1.setOnClickListener(v -> startActivity(new Intent(getActivity(), SafetyTipsActivity.class)));
+        box2.setOnClickListener(v -> startActivity(new Intent(getActivity(), AlertContactActivity2.class)));
+        box3.setOnClickListener(v -> startActivity(new Intent(getActivity(), EmergencyActivity2.class)));
+        box4.setOnClickListener(v -> startActivity(new Intent(getActivity(), AlertContactsActivity.class)));
+        box5.setOnClickListener(v -> startActivity(new Intent(getActivity(), LinksListActivity.class)));
 
         return view;
+    }
+
+
+    private boolean hasLocationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+
+            return ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        } else {
+            return ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        }
+    }
+
+    private void requestLocationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            requestPermissions(
+                    new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                    },
+                    LOCATION_PERMISSION_REQUEST_CODE
+            );
+        } else {
+            requestPermissions(
+                    new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    },
+                    LOCATION_PERMISSION_REQUEST_CODE
+            );
+        }
+    }
+
+    private boolean isLocationEnabled() {
+        LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
+
+    private void promptToEnableGPS() {
+        new AlertDialog.Builder(getContext())
+                .setMessage("GPS is required for this feature. Please enable it.")
+                .setPositiveButton("Go to Settings", (dialog, which) -> {
+                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivityForResult(intent, GPS_REQUEST_CODE);
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GPS_REQUEST_CODE) {
+            if (isLocationEnabled()) {
+                Toast.makeText(getContext(), "GPS enabled", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
+            } else {
+                Toast.makeText(getContext(), "Please enable GPS to continue", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && allPermissionsGranted(grantResults)) {
+                if (isLocationEnabled()) {
+                    startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
+                } else {
+                    promptToEnableGPS();
+                }
+            } else {
+                Toast.makeText(getContext(), "Location permission denied", Toast.LENGTH_SHORT).show();
+                showPermissionDeniedDialog();
+            }
+        }
+    }
+
+    private boolean allPermissionsGranted(int[] grantResults) {
+        for (int result : grantResults) {
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void showPermissionDeniedDialog() {
+        new AlertDialog.Builder(getContext())
+                .setMessage("Location permission is required to proceed.")
+                .setPositiveButton("Go to Settings", (dialog, which) -> {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
     }
 }
