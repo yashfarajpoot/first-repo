@@ -1,10 +1,8 @@
 package com.faiza1.intent;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -13,7 +11,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +23,12 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class AlertActivatedActivity extends AppCompatActivity {
 
@@ -68,6 +68,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void handlePanicButtonClick() {
         if (smsCheckbox.isChecked()) {
@@ -146,24 +147,24 @@ public class AlertActivatedActivity extends AppCompatActivity {
     }
 
     private void fetchContactsFromFirebase() {
-        db.collection("contacts")
-                .get()
-                .addOnSuccessListener(new com.google.android.gms.tasks.OnSuccessListener<QuerySnapshot>() {
+        FirebaseDatabase.getInstance().getReference("Contacts").child(FirebaseAuth.getInstance().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
-                            String name = document.getString("name");
-                            String phone = document.getString("phone");
-                            Toast.makeText(AlertActivatedActivity.this, "Contact: " + name + " - " + phone, Toast.LENGTH_LONG).show();
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
+                            AlertContact contact = contactSnapshot.getValue(AlertContact.class);
+                            Log.e( "onDataChange: ", contact.getName()+"");
                         }
                     }
-                })
-                .addOnFailureListener(new com.google.android.gms.tasks.OnFailureListener() {
+
                     @Override
-                    public void onFailure(Exception e) {
-                        Toast.makeText(AlertActivatedActivity.this, "Failed to fetch contacts: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(AlertActivatedActivity.this, "Failed to load contacts", Toast.LENGTH_SHORT).show();
                     }
                 });
+
     }
-   
+
 }
+   
+

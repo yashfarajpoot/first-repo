@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class AddContactActivity extends AppCompatActivity {
         btnAddContact = findViewById(R.id.buttonAddContact);
 
         // Initialize Firebase database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("contacts");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Contacts");
 
         btnAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +58,21 @@ public class AddContactActivity extends AppCompatActivity {
 
                 // Create contact object
                 String contactId = databaseReference.push().getKey(); // unique ID
-                HashMap<String, String> contact = new HashMap<>();
-                contact.put("id", contactId);
-                contact.put("name", name);
-                contact.put("number", number);
+//                HashMap<String, String> contact = new HashMap<>();
+//                contact.put("id", contactId);
+//                contact.put("name", name);
+//                contact.put("number", number);
+
+                AlertContact alertContact = new AlertContact();
+                alertContact.setName(name);
+                alertContact.setNumber(number);
+                alertContact.setId(contactId);
 
                 // Store contact
-                databaseReference.child(contactId).setValue(contact)
+                databaseReference
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child(contactId)
+                        .setValue(alertContact)
                         .addOnSuccessListener(aVoid -> {
                             Toast.makeText(AddContactActivity.this, "Contact added successfully", Toast.LENGTH_LONG).show();
                             editTextName.setText("");
