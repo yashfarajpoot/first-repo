@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
+import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +42,14 @@ public class AlertActivatedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_activated);
+        WebView webView = findViewById(R.id.mapWebView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
+
+// Load Google Map location URL
+        String mapUrl = "https://www.google.com/maps?q=37.7749,-122.4194";
+        webView.loadUrl(mapUrl);
+
 
         btnpanicButton = findViewById(R.id.btn_panicButton);
         smsCheckbox = findViewById(R.id.smsCheckbox);
