@@ -33,27 +33,28 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class AlertActivatedActivity extends AppCompatActivity {
 
     Button btnpanicButton;
-    CheckBox smsCheckbox, callCheckbox, locationCheckbox;
+    CheckBox smsCheckbox, notificationCheckbox, locationCheckbox;
 
     FirebaseFirestore db;
     FusedLocationProviderClient fusedLocationClient;
+    WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_activated);
-        WebView webView = findViewById(R.id.mapWebView);
+        webView = findViewById(R.id.mapWebView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
 
 // Load Google Map location URL
-        String mapUrl = "https://www.google.com/maps?q=37.7749,-122.4194";
-        webView.loadUrl(mapUrl);
+//        String mapUrl = "https://www.google.com/maps?q=37.7749,-122.4194";
+//        webView.loadUrl(mapUrl);
 
 
         btnpanicButton = findViewById(R.id.btn_panicButton);
         smsCheckbox = findViewById(R.id.smsCheckbox);
-        callCheckbox = findViewById(R.id.callCheckbox);
+       notificationCheckbox = findViewById(R.id.notificationCheckbox);
         locationCheckbox = findViewById(R.id.locationCheckbox);
 
         db = FirebaseFirestore.getInstance();
@@ -72,8 +73,8 @@ public class AlertActivatedActivity extends AppCompatActivity {
         if (smsCheckbox.isChecked()) {
             sendSMS();
         }
-        if (callCheckbox.isChecked()) {
-            makeCall();
+        if (notificationCheckbox.isChecked()) {
+            makeNotification();
         }
         if (locationCheckbox.isChecked()) {
             getLocation();
@@ -84,8 +85,8 @@ public class AlertActivatedActivity extends AppCompatActivity {
         Toast.makeText(this, "Sending SMS...", Toast.LENGTH_SHORT).show();
     }
 
-    private void makeCall() {
-        Toast.makeText(this, "Making call...", Toast.LENGTH_SHORT).show();
+    private void makeNotification() {
+        Toast.makeText(this, "Making Notification...", Toast.LENGTH_SHORT).show();
     }
 
     private void getLocation() {
@@ -101,6 +102,8 @@ public class AlertActivatedActivity extends AppCompatActivity {
     }
 
     private void startLocationUpdates() {
+
+        Log.e("LOCATION", "startLocationUpdates: " );
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(Priority.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(10000); // 10 seconds
@@ -110,7 +113,10 @@ public class AlertActivatedActivity extends AppCompatActivity {
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
                 for (Location location : locationResult.getLocations()) {
+                    String mapUrl = "https://www.google.com/maps?q="+location.getLatitude()+","+location.getLongitude();
+                    webView.loadUrl(mapUrl);
                     Log.d("Location", "Lat: " + location.getLatitude() + ", Lng: " + location.getLongitude());
+                    break;
                 }
             }
         };

@@ -53,10 +53,10 @@
             android:checked="true" />
 
         <CheckBox
-            android:id="@+id/callCheckbox"
+            android:id="@+id/notificationCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Call"
+            android:text="Notification"
             android:textSize="15sp"
             android:paddingStart="10dp"
             android:layout_marginStart="16dp"
