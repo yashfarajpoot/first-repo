@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class NotificationData {
     private String  topic, title, body;
+    public String action, mapUrl;
     @SerializedName("auth_code")
     private String authCode;
 

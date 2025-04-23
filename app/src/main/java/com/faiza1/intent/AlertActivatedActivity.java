@@ -17,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.faiza1.intent.callback.DataCallback;
+import com.faiza1.intent.dao.UserDAO;
+import com.faiza1.intent.model.User;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -46,6 +49,8 @@ public class AlertActivatedActivity extends AppCompatActivity {
                 String mapUrl = "https://www.google.com/maps?q="+location.getLatitude()+","+location.getLongitude();
                 webView.loadUrl(mapUrl);
                 Log.d("Location", "Lat: " + location.getLatitude() + ", Lng: " + location.getLongitude());
+                fetchContactsFromFirebase(location);
+
                 break;
             }
         }
@@ -75,7 +80,6 @@ public class AlertActivatedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 handlePanicButtonClick();
-                fetchContactsFromFirebase();
             }
         });
     }
@@ -145,7 +149,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
         }
     }
 
-    private void fetchContactsFromFirebase() {
+    private void fetchContactsFromFirebase(Location location) {
         FirebaseDatabase.getInstance().getReference("Contacts")
                 .child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -163,29 +167,42 @@ public class AlertActivatedActivity extends AppCompatActivity {
                     }
                 });
 
-        FirebaseDatabase.getInstance().getReference("AlertContacts")
-                .child(FirebaseAuth.getInstance().getUid())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
-                            String id = contactSnapshot.getKey();
+        new UserDAO().getUser(new DataCallback<User>() {
+            @Override
+            public void onData(User user) {
+                FirebaseDatabase.getInstance().getReference("AlertContacts")
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
+                                    String id = contactSnapshot.getKey();
 
-                            NotificationData data = new NotificationData(
-                                    id,
-                                    "Alert",
-                                    "Notify to Contact"
-                            );
-                            NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
-                            Log.e( "NotiID: ", id+"");
-                        }
-                    }
+                                    NotificationData data = new NotificationData(
+                                            id,
+                                            "Alert from "+user.getName(),
+                                            "Click to open location"
+                                    );
+                                    data.mapUrl = "https://www.google.com/maps?q="+location.getLatitude()+","+location.getLongitude();
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(AlertActivatedActivity.this, "Failed to load noti contacts", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                                    NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
+                                    Log.e( "NotiID: ", id+"");
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(AlertActivatedActivity.this, "Failed to load noti contacts", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+
 
     }
 

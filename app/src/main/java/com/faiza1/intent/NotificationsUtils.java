@@ -6,11 +6,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
+import java.util.Map;
 import java.util.Random;
 
 import okhttp3.ResponseBody;
@@ -20,7 +22,10 @@ import retrofit2.Response;
 
 public class NotificationsUtils {
 
-    public static void showNotification(Context context, String title, String body) {
+    public static void showNotification(Context context, Map<String, String> map) {
+
+        String title = map.get("title");
+        String body = map.get("body");
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         String NOTIFICATION_CHANNEL_ID = "com.abidingtech.notify";
@@ -42,7 +47,15 @@ public class NotificationsUtils {
                 .setContentText(body);
         NotificationCompat.BigTextStyle btStyle = new NotificationCompat.BigTextStyle();
         btStyle.bigText(body);
-        Intent notificationIntent = new Intent(context, MainActivity.class);
+        String mapUrl = map.get("mapUrl");
+        Intent notificationIntent;
+        if(mapUrl != null){
+            notificationIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
+        }
+        else{
+            notificationIntent = new Intent(context, MainActivity.class);
+
+        }
         int notiId = new Random().nextInt(1000);
         notificationBuilder.setContentIntent(PendingIntent.getActivity(context, notiId, notificationIntent, PendingIntent.FLAG_IMMUTABLE));
         Notification notification = notificationBuilder.build();

@@ -25,7 +25,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         String title = map.get("title");
         String body = map.get("body");
-        NotificationsUtils.showNotification(getApplicationContext(), title, body);
+        NotificationsUtils.showNotification(getApplicationContext(), map);
         String uid = FirebaseAuth.getInstance().getUid();
 
         if(uid != null){
