@@ -2,6 +2,7 @@ package com.faiza1.intent.safetytip;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,10 +30,13 @@ public class TipDetailActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Safety safety = snapshot.getValue(Safety.class);
-                        if(safety != null){
+                        if(safety != null && safety.getDetail() != null){
                             String formattedString = safety.getDetail().replace("\\n", "\n");
                             tvDetail.setText(formattedString);
                             tvTitle.setText(safety.getTitle());
+                        }
+                        else{
+                            Toast.makeText(TipDetailActivity.this, "invalid data", Toast.LENGTH_SHORT).show();
                         }
                     }
 
