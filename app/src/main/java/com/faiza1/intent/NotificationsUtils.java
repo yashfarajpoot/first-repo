@@ -3,7 +3,9 @@ package com.faiza1.intent;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,9 @@ public class NotificationsUtils {
                 .setContentText(body);
         NotificationCompat.BigTextStyle btStyle = new NotificationCompat.BigTextStyle();
         btStyle.bigText(body);
+        Intent notificationIntent = new Intent(context, MainActivity.class);
+        int notiId = new Random().nextInt(1000);
+        notificationBuilder.setContentIntent(PendingIntent.getActivity(context, notiId, notificationIntent, PendingIntent.FLAG_IMMUTABLE));
         Notification notification = notificationBuilder.build();
         int id = new Random(System.currentTimeMillis()).nextInt(1000);
         notificationManager.notify(id, notification);

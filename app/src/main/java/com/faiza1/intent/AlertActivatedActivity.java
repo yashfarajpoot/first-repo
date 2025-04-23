@@ -39,6 +39,17 @@ public class AlertActivatedActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationClient;
     WebView webView;
 
+    LocationCallback locationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(@NonNull LocationResult locationResult) {
+            for (Location location : locationResult.getLocations()) {
+                String mapUrl = "https://www.google.com/maps?q="+location.getLatitude()+","+location.getLongitude();
+                webView.loadUrl(mapUrl);
+                Log.d("Location", "Lat: " + location.getLatitude() + ", Lng: " + location.getLongitude());
+                break;
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,18 +120,6 @@ public class AlertActivatedActivity extends AppCompatActivity {
         locationRequest.setPriority(Priority.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(10000); // 10 seconds
 
-        // Create location callback
-        LocationCallback locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(@NonNull LocationResult locationResult) {
-                for (Location location : locationResult.getLocations()) {
-                    String mapUrl = "https://www.google.com/maps?q="+location.getLatitude()+","+location.getLongitude();
-                    webView.loadUrl(mapUrl);
-                    Log.d("Location", "Lat: " + location.getLatitude() + ", Lng: " + location.getLongitude());
-                    break;
-                }
-            }
-        };
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -147,7 +146,8 @@ public class AlertActivatedActivity extends AppCompatActivity {
     }
 
     private void fetchContactsFromFirebase() {
-        FirebaseDatabase.getInstance().getReference("Contacts").child(FirebaseAuth.getInstance().getUid())
+        FirebaseDatabase.getInstance().getReference("Contacts")
+                .child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -163,8 +163,38 @@ public class AlertActivatedActivity extends AppCompatActivity {
                     }
                 });
 
+        FirebaseDatabase.getInstance().getReference("AlertContacts")
+                .child(FirebaseAuth.getInstance().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
+                            String id = contactSnapshot.getKey();
+
+                            NotificationData data = new NotificationData(
+                                    id,
+                                    "Alert",
+                                    "Notify to Contact"
+                            );
+                            NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
+                            Log.e( "NotiID: ", id+"");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(AlertActivatedActivity.this, "Failed to load noti contacts", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        fusedLocationClient.removeLocationUpdates(locationCallback);
+
+    }
 }
    
 
