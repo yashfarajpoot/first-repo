@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
@@ -55,7 +56,8 @@ public class AlertContactAdapter extends RecyclerView.Adapter<AlertContactViewHo
                         String contactId = alertcontact.getId();
                         if (contactId != null) {
                             FirebaseDatabase.getInstance()
-                                    .getReference("contacts")
+                                    .getReference("Contacts")
+                                    .child(FirebaseAuth.getInstance().getUid())
                                     .child(contactId)
                                     .removeValue()
                                     .addOnSuccessListener(aVoid -> {

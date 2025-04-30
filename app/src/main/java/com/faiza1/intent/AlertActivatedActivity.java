@@ -63,10 +63,6 @@ public class AlertActivatedActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
 
-// Load Google Map location URL
-//        String mapUrl = "https://www.google.com/maps?q=37.7749,-122.4194";
-//        webView.loadUrl(mapUrl);
-
 
         btnpanicButton = findViewById(R.id.btn_panicButton);
         smsCheckbox = findViewById(R.id.smsCheckbox);
@@ -93,7 +89,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
             makeNotification();
         }
         if (locationCheckbox.isChecked()) {
-            getLocation();
+//            getLocation();
         }
     }
 
