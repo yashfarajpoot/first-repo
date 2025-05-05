@@ -2,6 +2,8 @@ package com.faiza1.intent;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -37,9 +39,27 @@ public class SignUpActivity extends AppCompatActivity {
         editTextEmail=findViewById(R.id.edt_email_add);
         editTextPassword=findViewById(R.id.edt_password);
         btnSignUp = findViewById(R.id.btn_signup);
+        // Prevent whitespaces in email and password fields
+        InputFilter noWhiteSpaceWithToast = new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        Toast.makeText(SignUpActivity.this, "Spaces are not allowed", Toast.LENGTH_SHORT).show();
+                        return "";
+                    }
+                }
+                return null;
+            }
+        };
+
+        editTextEmail.setFilters(new InputFilter[]{noWhiteSpaceWithToast});
+        editTextPassword.setFilters(new InputFilter[]{noWhiteSpaceWithToast});
+        editTextName.setFilters(new InputFilter[]{noWhiteSpaceWithToast});
 
 
- tvSignIn= findViewById(R.id.tv_signin);
+        tvSignIn= findViewById(R.id.tv_signin);
 
         tvSignIn = findViewById(R.id.tv_signin);
 
@@ -60,10 +80,6 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String name = editTextName.getText().toString();
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                startActivity(intent);
-
-
 
                 if (name.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Please enter name" , Toast.LENGTH_LONG)
@@ -79,12 +95,10 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-
                 if (password.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Please enter password", Toast.LENGTH_LONG).show();
                     Log.e("onclick", password);
                     return;
-
                 }
                 if (password.length() < 8) {
                     Toast.makeText(SignUpActivity.this, "Please enter the at least 8 character", Toast.LENGTH_LONG).show();

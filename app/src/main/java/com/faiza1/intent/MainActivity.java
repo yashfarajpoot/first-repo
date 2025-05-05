@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     TextInputEditText editTextPassword;
     TextView tvSignup;
     Button btnSignin;
+    public Toast currentToast;
 
 
     @Override
@@ -58,6 +60,27 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.edt_password);
         btnSignin = findViewById(R.id.btn_signin);
         tvSignup = findViewById(R.id.tv_signup);
+        // Prevent whitespaces in email and password fields
+
+        InputFilter noWhiteSpaceFilter = new InputFilter() {
+
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       android.text.Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        if (currentToast != null) currentToast.cancel(); // Cancel previous Toast
+                        currentToast = Toast.makeText(MainActivity.this, "Spaces are not allowed", Toast.LENGTH_SHORT);
+                        currentToast.show();
+                        return "";
+                    }
+                }
+                return null;
+            }
+        };
+
+        editTextEmail.setFilters(new InputFilter[]{noWhiteSpaceFilter});
+        editTextPassword.setFilters(new InputFilter[]{noWhiteSpaceFilter});
 
         tvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                     finish();
+
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
