@@ -1,10 +1,16 @@
 package com.faiza1.intent;
 
 import android.Manifest;
+import android.app.role.RoleManager;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.Telephony;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -46,7 +52,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
         @Override
         public void onLocationResult(@NonNull LocationResult locationResult) {
             for (Location location : locationResult.getLocations()) {
-                String mapUrl = "https://www.google.com/maps?q="+location.getLatitude()+","+location.getLongitude();
+                String mapUrl = "https://www.google.com/maps?q=" + location.getLatitude() + "," + location.getLongitude();
                 webView.loadUrl(mapUrl);
                 Log.d("Location", "Lat: " + location.getLatitude() + ", Lng: " + location.getLongitude());
                 fetchContactsFromFirebase(location);
@@ -55,6 +61,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
             }
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,12 +73,17 @@ public class AlertActivatedActivity extends AppCompatActivity {
 
         btnpanicButton = findViewById(R.id.btn_panicButton);
         smsCheckbox = findViewById(R.id.smsCheckbox);
-       notificationCheckbox = findViewById(R.id.notificationCheckbox);
+        notificationCheckbox = findViewById(R.id.notificationCheckbox);
         locationCheckbox = findViewById(R.id.locationCheckbox);
 
         db = FirebaseFirestore.getInstance();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.SEND_SMS}, 1);
+        }
         btnpanicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,12 +101,31 @@ public class AlertActivatedActivity extends AppCompatActivity {
             makeNotification();
         }
         if (locationCheckbox.isChecked()) {
-//            getLocation();
+            getLocation();
         }
     }
 
     private void sendSMS() {
         Toast.makeText(this, "Sending SMS...", Toast.LENGTH_SHORT).show();
+        Context context = AlertActivatedActivity.this;
+
+        if(!locationCheckbox.isChecked()){
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage("03271572372", null, "This is msg from women security app", null, null);
+        }
+
+        Toast.makeText(context, "SMS sent.", Toast.LENGTH_SHORT).show();
+
+//        if (!context.getPackageName().equals(Telephony.Sms.getDefaultSmsPackage(context))) {
+//            // Not default SMS app
+//            Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
+//            intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, context.getPackageName());
+//            context.startActivity(intent); // User must accept this
+//            Toast.makeText(context, "Not default app", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+
+
     }
 
     private void makeNotification() {
@@ -115,7 +146,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
 
     private void startLocationUpdates() {
 
-        Log.e("LOCATION", "startLocationUpdates: " );
+        Log.e("LOCATION", "startLocationUpdates: ");
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(Priority.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(10000); // 10 seconds
@@ -153,7 +184,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
                             AlertContact contact = contactSnapshot.getValue(AlertContact.class);
-                            Log.e( "onDataChange: ", contact.getName()+"");
+                            Log.e("onDataChange: ", contact.getName() + "");
                         }
                     }
 
@@ -176,13 +207,16 @@ public class AlertActivatedActivity extends AppCompatActivity {
 
                                     NotificationData data = new NotificationData(
                                             id,
-                                            "Alert from "+user.getName(),
+                                            "Alert from " + user.getName(),
                                             "Click to open location"
                                     );
-                                    data.mapUrl = "https://www.google.com/maps?q="+location.getLatitude()+","+location.getLongitude();
+                                    data.mapUrl = "https://www.google.com/maps?q=" + location.getLatitude() + "," + location.getLongitude();
+
+                                    SmsManager smsManager = SmsManager.getDefault();
+                                    smsManager.sendTextMessage("03271572372", null, "Alert\n"+data.mapUrl, null, null);
 
                                     NotificationsUtils.sendNotification(AlertActivatedActivity.this, data);
-                                    Log.e( "NotiID: ", id+"");
+                                    Log.e("NotiID: ", id + "");
                                 }
                             }
 
