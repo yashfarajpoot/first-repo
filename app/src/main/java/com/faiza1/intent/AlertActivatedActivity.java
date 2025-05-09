@@ -106,15 +106,46 @@ public class AlertActivatedActivity extends AppCompatActivity {
     }
 
     private void sendSMS() {
-        Toast.makeText(this, "Sending SMS...", Toast.LENGTH_SHORT).show();
-        Context context = AlertActivatedActivity.this;
+        Toast.makeText(this, "Sending SMS to all contacts...", Toast.LENGTH_SHORT).show();
 
-        if(!locationCheckbox.isChecked()){
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("03271572372", null, "This is msg from women security app", null, null);
-        }
+        FirebaseDatabase.getInstance().getReference("Contacts")
+                .child(FirebaseAuth.getInstance().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
+                            AlertContact contact = contactSnapshot.getValue(AlertContact.class);
 
-        Toast.makeText(context, "SMS sent.", Toast.LENGTH_SHORT).show();
+                            if (contact != null && contact.getNumber() != null) {
+                                String phoneNumber = contact.getNumber();
+                                String message;
+
+                                if (locationCheckbox.isChecked()) {
+                                    message = "Emergency! Location will be shared shortly.";
+                                } else {
+                                    message = "Emergency alert from Women's Security App. Please contact immediately!";
+                                }
+
+                                try {
+                                    SmsManager smsManager = SmsManager.getDefault();
+                                    smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+                                    Log.d("SMS Sent", "To: " + phoneNumber);
+                                } catch (Exception e) {
+                                    Log.e("SMS Error", "Failed to send SMS to " + phoneNumber, e);
+                                }
+                            }
+                        }
+
+                        Toast.makeText(AlertActivatedActivity.this, "All SMS sent successfully!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(AlertActivatedActivity.this, "Failed to fetch contacts from Firebase", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
 
 //        if (!context.getPackageName().equals(Telephony.Sms.getDefaultSmsPackage(context))) {
 //            // Not default SMS app
@@ -126,7 +157,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
 //        }
 
 
-    }
+
 
     private void makeNotification() {
         Toast.makeText(this, "Making Notification...", Toast.LENGTH_SHORT).show();
@@ -185,6 +216,16 @@ public class AlertActivatedActivity extends AppCompatActivity {
                         for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
                             AlertContact contact = contactSnapshot.getValue(AlertContact.class);
                             Log.e("onDataChange: ", contact.getName() + "");
+                            if (contact != null && contact.getNumber() != null) {
+                                String phoneNumber = contact.getNumber();
+                                String message = "Emergency! " +
+                                        "Location: https://www.google.com/maps?q=" +
+                                        location.getLatitude() + "," + location.getLongitude();
+
+                                SmsManager smsManager = SmsManager.getDefault();
+                                smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+                                Log.d("SMS Sent", "To: " + phoneNumber);
+                            }
                         }
                     }
 
