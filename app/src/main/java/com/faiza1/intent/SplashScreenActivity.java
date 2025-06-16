@@ -10,6 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.faiza1.intent.callback.DataCallback;
+import com.faiza1.intent.dao.UserDAO;
+import com.faiza1.intent.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -25,15 +28,37 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
 
             if(FirebaseAuth.getInstance().getCurrentUser() != null){
-                Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                startActivity(intent);
+
+                new UserDAO().getUser(new DataCallback<User>() {
+                    @Override
+                    public void onData(User user) {
+
+                        if("Admin".equals(user.getRole())){
+                            //start admin activity
+                        }
+                        else{
+                            Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        }
+
+                        finish();
+
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+                });
+
             }
             else{
                 Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
+
             }
 
-            finish();
         }, SPLASH_TIME_OUT);
 
 

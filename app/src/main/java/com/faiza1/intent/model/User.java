@@ -1,13 +1,21 @@
 package com.faiza1.intent.model;
 
 public class User {
-    private String name, email,id;
+    private String name, email,id, role;
     public User(){
     }
     public User(String  id, String name, String email) {
         this. id =  id;
         this.name = name;
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getName() {
