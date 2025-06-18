@@ -35,6 +35,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                         if("Admin".equals(user.getRole())){
                             //start admin activity
+                            Intent intent = new Intent(SplashScreenActivity.this, HomeAdminActivity.class);
+                            startActivity(intent);
                         }
                         else{
                             Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
