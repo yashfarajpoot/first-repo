@@ -4,4 +4,9 @@
         android:id="@+id/item_userhistory"
         android:title="UserHistory"
         android:icon="@drawable/history"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Admin Profile"
+        android:icon="@drawable/profile2" />
 </menu>
