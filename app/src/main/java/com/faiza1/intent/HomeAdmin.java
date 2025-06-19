@@ -32,6 +32,7 @@ public class HomeAdmin extends AppCompatActivity {
                 return true;
             }
         });
+
     }
     private void loadFragment(Fragment fragment){
         long epoch = new Date().getTime();//timestamp
