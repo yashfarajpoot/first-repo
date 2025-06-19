@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Date;
+
 public class HomeAdmin extends AppCompatActivity {
 
     @Override
@@ -32,6 +34,7 @@ public class HomeAdmin extends AppCompatActivity {
         });
     }
     private void loadFragment(Fragment fragment){
+        long epoch = new Date().getTime();//timestamp
         getSupportFragmentManager()
                 .beginTransaction().replace(R.id.fragment_container,new AdminFragment())
                 .commit();
