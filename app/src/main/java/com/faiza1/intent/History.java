@@ -3,16 +3,16 @@ package com.faiza1.intent;
 public class History {
     private String name;
     private String email;
-    private String time;
+    private String image;
 
     public History() {
         // Required empty constructor
     }
 
-    public History(String name, String email, String time) {
+    public History(String name, String email, String image) {
         this.name = name;
-        this.email = email;
-        this.time = time;
+        this.email =email;
+        this.image = image;
     }
 
     public String getName() {
@@ -31,11 +31,11 @@ public class History {
         this.email = email;
     }
 
-    public String getTime() {
-        return time;
+    public String getImage() {
+        return image;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

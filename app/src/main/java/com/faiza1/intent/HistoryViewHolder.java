@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class HistoryViewHolder extends RecyclerView.ViewHolder {
 
-    TextView tvName, tvEmail, tvTime;
+    TextView tvName, tvEmail, tvImage;
 
     public HistoryViewHolder(@NonNull View itemView) {
         super(itemView);
         tvName = itemView.findViewById(R.id.tv_name);
         tvEmail = itemView.findViewById(R.id.tv_email);
-        tvTime = itemView.findViewById(R.id.tv_time);
+        tvImage = itemView.findViewById(R.id.tv_image);
     }
 }
 

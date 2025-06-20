@@ -30,7 +30,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
         History model = historyList.get(position);
         holder.tvName.setText(model.getName());
         holder.tvEmail.setText(model.getEmail());
-        holder.tvTime.setText(model.getTime());
+        holder.tvImage.setText(model.getImage());
     }
 
     @Override

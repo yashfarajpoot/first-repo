@@ -1,16 +1,12 @@
 package com.faiza1.intent;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class AdminUserHistoryActivity extends AppCompatActivity {
 
@@ -22,21 +18,19 @@ public class AdminUserHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_user_history);
-        RecyclerView hrHistory = findViewById(R.id.hr_history);
 
-        List<History> historyList = new ArrayList<>();
+        hrHistory = findViewById(R.id.hr_history);
+        hrHistory.setLayoutManager(new LinearLayoutManager(this)); // Missing layout manager
+
+        historyList = new ArrayList<>();
 
         History history = new History();
-
         history.setName("Mahnoor");
-        history.setEmail("gujranwala");
-        history.setTime("12:00pm");
+        history.setEmail("Gujranwala");
+        history.setImage("12:00 PM");
         historyList.add(history);
 
-        HistoryAdapter adapter = new HistoryAdapter(historyList);
+        adapter = new HistoryAdapter(historyList);
         hrHistory.setAdapter(adapter);
-
-
     }
-
 }
