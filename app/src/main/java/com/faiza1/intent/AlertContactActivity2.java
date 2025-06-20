@@ -1,9 +1,8 @@
 package com.faiza1.intent;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -44,17 +43,16 @@ public class AlertContactActivity2 extends AppCompatActivity {
         rvAlertContacts.setAdapter(adapter);
 
         // Firebase reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("Contacts").child(FirebaseAuth.getInstance().getUid());
+        databaseReference = FirebaseDatabase.getInstance().getReference("Contacts")
+                .child(FirebaseAuth.getInstance().getUid());
 
         // Load contacts from Firebase
         loadContacts();
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AlertContactActivity2.this, AddContactActivity.class);
-                startActivity(intent);
-            }
+        // Button to go to Add Contact screen
+        btnAdd.setOnClickListener(v -> {
+            Intent intent = new Intent(AlertContactActivity2.this, AddContactActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -62,12 +60,30 @@ public class AlertContactActivity2 extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                alertContactList.clear(); // clear list before adding new data
+                alertContactList.clear();
                 for (DataSnapshot contactSnapshot : snapshot.getChildren()) {
                     AlertContact contact = contactSnapshot.getValue(AlertContact.class);
                     alertContactList.add(contact);
                 }
-                adapter.notifyDataSetChanged(); // refresh RecyclerView
+
+                // Refresh adapter
+                adapter.notifyDataSetChanged();
+
+                // ✅ Save contact count to SharedPreferences
+                int contactCount = alertContactList.size();
+                SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putInt("contact_count", contactCount);
+                editor.apply();
+
+                // ✅ Open next activity if at least one contact is added
+                if (contactCount >= 1) {
+                    Intent intent = new Intent(AlertContactActivity2.this, AlertActivatedActivity.class);
+                    startActivity(intent);
+                    finish(); // Optional: Finish current activity
+                } else {
+                    Toast.makeText(AlertContactActivity2.this, "No contact found, please add one.", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -75,35 +91,5 @@ public class AlertContactActivity2 extends AppCompatActivity {
                 Toast.makeText(AlertContactActivity2.this, "Failed to load contacts", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-// List<AlertContact> alertContactList = new ArrayList<>();
-
-      //  AlertContact alertContact = new AlertContact();
-      //  alertContact.name = "Ahmad";
-      //  alertContact.number = "0301-1216728";
-
-
-
-
-
-      //  alertContactList.add(alertContact);
-
-
-      // AlertContactAdapter adapter = new AlertContactAdapter(alertContactList);
-      //  rvAlertContacts.setAdapter(adapter);
-
-
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AlertContactActivity2.this, AddContactActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
     }
 }

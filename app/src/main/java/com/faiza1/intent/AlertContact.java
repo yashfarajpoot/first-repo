@@ -1,5 +1,7 @@
 package com.faiza1.intent;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -46,17 +48,6 @@ public class AlertContact {
         this.number = number;
     }
 
-    // ✅ Save contact count to SharedPreferences
-    public static void saveContactCount(Context context, int count) {
-        SharedPreferences prefs = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("contact_count", count);  // set count directly
-        editor.apply();
-    }
-
-    // ✅ (Optional) Get contact count from SharedPreferences
-    public static int getContactCount(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        return prefs.getInt("contact_count", 0);  // default 0 if not found
-    }
 }
+
+

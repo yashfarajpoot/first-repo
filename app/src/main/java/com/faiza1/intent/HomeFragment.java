@@ -28,7 +28,6 @@ public class HomeFragment extends Fragment {
     private LinearLayout box1, box2, box3, box4, box5;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 101;
     private static final int GPS_REQUEST_CODE = 102;
-
     Button btnActivate;
 
     @Override
@@ -36,7 +35,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Find views
         box1 = view.findViewById(R.id.tv_box1);
         box2 = view.findViewById(R.id.tv_box2);
         box3 = view.findViewById(R.id.tv_box3);
@@ -44,29 +42,31 @@ public class HomeFragment extends Fragment {
         box5 = view.findViewById(R.id.tv_box5);
         btnActivate = view.findViewById(R.id.btn_activate);
 
-        // ✅ Activate Button Logic
         btnActivate.setOnClickListener(v -> {
 
+            // ✅ Step 1: Check Contact
             if (!hasAtLeastOneContact()) {
                 Toast.makeText(getContext(), "Please add at least one contact to continue.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // ✅ Step 2: Check Location Permission
             if (!hasLocationPermission()) {
                 requestLocationPermission();
                 return;
             }
 
+            // ✅ Step 3: Check GPS
             if (!isLocationEnabled()) {
                 promptToEnableGPS();
                 return;
             }
 
-            // Sab kuch sahi hai
+            // ✅ Step 4: All set, open AlertActivatedActivity
             startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
         });
 
-        // Navigation logic
+        // Navigation setup
         box1.setOnClickListener(v -> startActivity(new Intent(getActivity(), SafetyTipsActivity.class)));
         box2.setOnClickListener(v -> startActivity(new Intent(getActivity(), AlertContactActivity2.class)));
         box3.setOnClickListener(v -> startActivity(new Intent(getActivity(), EmergencyActivity2.class)));
@@ -76,7 +76,6 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    // ✅ Check if at least one contact is saved
     private boolean hasAtLeastOneContact() {
         SharedPreferences prefs = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         int contactCount = prefs.getInt("contact_count", 0);
@@ -129,40 +128,29 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == GPS_REQUEST_CODE) {
-            if (isLocationEnabled()) {
-                Toast.makeText(getContext(), "GPS enabled", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
-            } else {
-                Toast.makeText(getContext(), "Please enable GPS to continue", Toast.LENGTH_SHORT).show();
-            }
+        if (requestCode == GPS_REQUEST_CODE && isLocationEnabled()) {
+            startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && allPermissionsGranted(grantResults)) {
-                if (isLocationEnabled()) {
-                    startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
-                } else {
-                    promptToEnableGPS();
-                }
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE && allPermissionsGranted(grantResults)) {
+            if (isLocationEnabled()) {
+                startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
             } else {
-                Toast.makeText(getContext(), "Location permission denied", Toast.LENGTH_SHORT).show();
-                showPermissionDeniedDialog();
+                promptToEnableGPS();
             }
+        } else {
+            showPermissionDeniedDialog();
         }
     }
 
     private boolean allPermissionsGranted(int[] grantResults) {
         for (int result : grantResults) {
-            if (result != PackageManager.PERMISSION_GRANTED) {
-                return false;
-            }
+            if (result != PackageManager.PERMISSION_GRANTED) return false;
         }
         return true;
     }
@@ -172,7 +160,7 @@ public class HomeFragment extends Fragment {
                 .setMessage("Location permission is required to proceed.")
                 .setPositiveButton("Go to Settings", (dialog, which) -> {
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                    Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
+                    Uri uri = Uri.fromParts("package", requireActivity().getPackageName(), null);
                     intent.setData(uri);
                     startActivity(intent);
                 })
