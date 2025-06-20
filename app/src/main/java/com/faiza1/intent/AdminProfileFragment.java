@@ -161,11 +161,13 @@ public class AdminProfileFragment extends Fragment {
                 .setMessage("Are you sure you want to log out?")
                 .setPositiveButton("Yes", (dialog, which) -> {
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(getActivity(), MainActivity.class));
+                    Intent intent = new Intent(getActivity(), MainActivity.class); // 👈 replace with your actual SignIn activity
+                    startActivity(intent);
                     if (getActivity() != null) getActivity().finish();
-                    Toast.makeText(getActivity(), "Logout successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Logged out successfully", Toast.LENGTH_LONG).show();
                 })
                 .setNegativeButton("No", null)
                 .show();
     }
+
 }

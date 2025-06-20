@@ -5,10 +5,10 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserFragment">
+    tools:context=".AdminProfileFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="275dp"
+        android:layout_height="300dp"
         android:background="#F31E054B"
         android:orientation="vertical">
 

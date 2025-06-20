@@ -6,7 +6,7 @@
         android:icon="@drawable/history"/>
 
     <item
-        android:id="@+id/nav_profile"
-        android:title="Admin Profile"
+        android:id="@+id/item_adminprofile"
+        android:title="AdminProfile"
         android:icon="@drawable/profile2" />
 </menu>

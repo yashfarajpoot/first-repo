@@ -32,6 +32,9 @@
         android:theme="@style/Theme.Intent"
         tools:targetApi="31">
         <activity
+            android:name=".AdminUserHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminProfileActivity"
             android:exported="false" />
         <activity

@@ -23,11 +23,16 @@ public class HomeAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.item_userhistory){
               loadFragment(new AdminFragment());
+                }
+                else if(item.getItemId() == R.id.item_adminprofile){
+                    loadFragment(new AdminProfileFragment() );
                 }
                 return true;
             }
@@ -36,8 +41,9 @@ public class HomeAdmin extends AppCompatActivity {
     }
     private void loadFragment(Fragment fragment){
         long epoch = new Date().getTime();//timestamp
-        getSupportFragmentManager()
-                .beginTransaction().replace(R.id.fragment_container,new AdminFragment())
-                .commit();
-    }
+                    getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+        }
     }
