@@ -35,6 +35,7 @@ import com.google.android.gms.location.Priority;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -227,8 +228,35 @@ public class AlertActivatedActivity extends AppCompatActivity {
                                 Log.d("SMS Sent", "To: " + phoneNumber);
                             }
                         }
-                    }
+                        // ✅ SAVE HISTORY to Firebase with respect to checkbox selections
+                        String uid = FirebaseAuth.getInstance().getUid();
+                        String mapUrl = "https://www.google.com/maps?q=" + location.getLatitude() + "," + location.getLongitude();
+                        long timestamp = System.currentTimeMillis();
 
+                        String smsText = smsCheckbox != null && smsCheckbox.isChecked()
+                                ? "Emergency! Location: " + mapUrl
+                                : "SMS not selected";
+
+                        String notificationText = notificationCheckbox != null && notificationCheckbox.isChecked()
+                                ? "Notification sent with location."
+                                : "Notification not selected";
+
+                        String locationText = locationCheckbox != null && locationCheckbox.isChecked()
+                                ? mapUrl
+                                : "Location not shared";
+
+                        DatabaseReference historyRef = FirebaseDatabase.getInstance()
+                                .getReference("UserAlerts")
+                                .child(uid)
+                                .push();
+
+                        historyRef.child("sms").setValue(smsText);
+                        historyRef.child("notification").setValue(notificationText);
+                        historyRef.child("location").setValue(locationText);
+                        historyRef.child("timestamp").setValue(timestamp);
+
+
+                    }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(AlertActivatedActivity.this, "Failed to load contacts", Toast.LENGTH_SHORT).show();
@@ -283,6 +311,8 @@ public class AlertActivatedActivity extends AppCompatActivity {
         fusedLocationClient.removeLocationUpdates(locationCallback);
 
     }
+
+
 }
    
 
