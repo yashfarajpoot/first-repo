@@ -7,13 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Links"
-        style="@style/HeadingText"
-        android:gravity="center"
-        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_links"
         android:layout_width="match_parent"
