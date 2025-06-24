@@ -18,12 +18,10 @@ import java.util.List;
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
     private List<User> userList;
-    private String currentUserId;
     private Context context;
 
-    public UserAdapter(List<User> userList, String currentUserId, Context context) {
+    public UserAdapter(Context context,List<User> userList) {
         this.userList = userList;
-        this.currentUserId = currentUserId;
         this.context = context;
     }
 
@@ -53,7 +51,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
                         }
                         // Remove from Firebase
                         FirebaseDatabase.getInstance().getReference("AlertContacts")
-                                .child(currentUserId)
+//                                .child(currentUserId)
                                 .child(contactUid)
                                 .removeValue()
                                 .addOnSuccessListener(unused -> {

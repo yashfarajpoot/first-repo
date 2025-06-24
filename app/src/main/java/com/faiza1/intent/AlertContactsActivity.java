@@ -59,7 +59,7 @@ public class AlertContactsActivity extends AppCompatActivity {
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
 
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new UserAdapter(userList, currentUserId, AlertContactsActivity.this);
+        adapter = new UserAdapter( AlertContactsActivity.this, userList);
         rvContacts.setAdapter(adapter);
 
         // Load contacts
