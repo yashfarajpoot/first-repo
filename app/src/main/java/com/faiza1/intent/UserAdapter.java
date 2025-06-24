@@ -51,7 +51,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
                         }
                         // Remove from Firebase
                         FirebaseDatabase.getInstance().getReference("AlertContacts")
-//                                .child(currentUserId)
                                 .child(contactUid)
                                 .removeValue()
                                 .addOnSuccessListener(unused -> {
