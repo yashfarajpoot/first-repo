@@ -7,14 +7,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.faiza1.intent.model.User;
+
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
 
-    private List<History> historyList;
+    private List<User> userList;
 
-    public HistoryAdapter(List<History> historyList) {
-        this.historyList = historyList;
+    public HistoryAdapter(List<User> historyList) {
+        this.userList = historyList;
     }
 
     @NonNull
@@ -27,15 +29,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-        History model = historyList.get(position);
+        User model = userList.get(position);
         holder.tvName.setText(model.getName());
         holder.tvEmail.setText(model.getEmail());
-        holder.tvImage.setText(model.getImage());
+      //  holder.tvImage.setText(model.getImage());
     }
 
     @Override
     public int getItemCount() {
-        return historyList.size();
+        return userList.size();
     }
 }
 
