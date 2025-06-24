@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:text="Email" />
-        
+
 
        </LinearLayout>
     </LinearLayout>
