@@ -24,26 +24,28 @@ public class HomeAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_home_admin);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        loadFragment(new AdminFragment());
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.item_userhistory){
-              loadFragment(new AdminFragment());
-                }
-                else if(item.getItemId() == R.id.item_adminprofile){
-                    loadFragment(new AdminProfileFragment() );
+                if (item.getItemId() == R.id.item_userhistory) {
+                    loadFragment(new AdminFragment());
+                } else if (item.getItemId() == R.id.item_adminprofile) {
+                    loadFragment(new AdminProfileFragment());
                 }
                 return true;
             }
         });
 
     }
-    private void loadFragment(Fragment fragment){
+
+    private void loadFragment(Fragment fragment) {
         long epoch = new Date().getTime();//timestamp
-                    getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .commit();
-        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
+}

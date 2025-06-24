@@ -34,12 +34,7 @@
         <activity
             android:name=".CompleteHistoryActivity"
             android:exported="false" />
-        <activity
-            android:name=".AdminUserHistoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminProfileActivity"
-            android:exported="false" />
+
         <activity
             android:name=".HomeAdmin"
             android:exported="false" />

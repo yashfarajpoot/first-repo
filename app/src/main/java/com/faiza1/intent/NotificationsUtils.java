@@ -44,6 +44,7 @@ public class NotificationsUtils {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(title)
+            //    .setSound()
                 .setContentText(body);
         NotificationCompat.BigTextStyle btStyle = new NotificationCompat.BigTextStyle();
         btStyle.bigText(body);
