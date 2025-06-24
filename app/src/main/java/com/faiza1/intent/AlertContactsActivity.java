@@ -50,6 +50,7 @@ public class AlertContactsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_contacts);
+        
 
         RecyclerView rvContacts = findViewById(R.id.rv_contacts);
         Button btnAdd = findViewById(R.id.btn_add);
