@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -22,6 +21,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.*;
 
 public class HomeFragment extends Fragment {
 
@@ -43,27 +45,39 @@ public class HomeFragment extends Fragment {
         btnActivate = view.findViewById(R.id.btn_activate);
 
         btnActivate.setOnClickListener(v -> {
-
-            // ✅ Step 1: Check Contact
-            if (!hasAtLeastOneContact()) {
-                Toast.makeText(getContext(), "Please add at least one contact to continue.", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // ✅ Step 2: Check Location Permission
+            // Step 1: Check Location Permissions
             if (!hasLocationPermission()) {
                 requestLocationPermission();
                 return;
             }
 
-            // ✅ Step 3: Check GPS
+            // Step 2: Check if GPS is enabled
             if (!isLocationEnabled()) {
                 promptToEnableGPS();
                 return;
             }
 
-            // ✅ Step 4: All set, open AlertActivatedActivity
-            startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
+            // Step 3: Check Firebase AlertContacts
+            DatabaseReference ref = FirebaseDatabase.getInstance()
+                    .getReference("AlertContacts")
+                    .child(FirebaseAuth.getInstance().getUid());
+
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    long contactCount = snapshot.getChildrenCount();
+                    if (contactCount >= 1) {
+                        startActivity(new Intent(getActivity(), AlertActivatedActivity.class));
+                    } else {
+                        Toast.makeText(getContext(), "Please add at least one contact first.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), "Failed to check contacts", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
         // Navigation setup
@@ -74,12 +88,6 @@ public class HomeFragment extends Fragment {
         box5.setOnClickListener(v -> startActivity(new Intent(getActivity(), LinksListActivity.class)));
 
         return view;
-    }
-
-    private boolean hasAtLeastOneContact() {
-        SharedPreferences prefs = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        int contactCount = prefs.getInt("contact_count", 0);
-        return contactCount > 0;
     }
 
     private boolean hasLocationPermission() {

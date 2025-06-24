@@ -75,16 +75,9 @@ public class AlertContactActivity2 extends AppCompatActivity {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("contact_count", contactCount);
                 editor.apply();
-
-                // ✅ Open next activity if at least one contact is added
-                if (contactCount >= 1) {
-                    Intent intent = new Intent(AlertContactActivity2.this, AlertActivatedActivity.class);
-                    startActivity(intent);
-                    finish(); // Optional: Finish current activity
-                } else {
-                    Toast.makeText(AlertContactActivity2.this, "No contact found, please add one.", Toast.LENGTH_SHORT).show();
-                }
             }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

@@ -23,7 +23,7 @@ public class HomeAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
