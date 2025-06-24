@@ -1,8 +1,10 @@
 package com.faiza1.intent;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +35,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
         holder.tvName.setText(model.getName());
         holder.tvEmail.setText(model.getEmail());
       //  holder.tvImage.setText(model.getImage());
+        holder.itemView.setOnClickListener(v -> {
+
+            Intent intent = new Intent(holder.itemView.getContext(), CompleteHistoryActivity.class);
+            intent.putExtra("uid", model.getId()); // Firebase UID
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     @Override
