@@ -39,12 +39,16 @@ public class NotificationsUtils {
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
+        Uri soundUri = Uri.parse(
+                "android.resource://" +
+                        context.getPackageName() +
+                        "/raw/sound");
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID);
         notificationBuilder.setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(title)
-            //    .setSound()
+                 .setSound(soundUri)
                 .setContentText(body);
         NotificationCompat.BigTextStyle btStyle = new NotificationCompat.BigTextStyle();
         btStyle.bigText(body);
