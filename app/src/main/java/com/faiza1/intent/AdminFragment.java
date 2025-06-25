@@ -24,7 +24,7 @@ import java.util.List;
 public class AdminFragment extends Fragment {
 
     private RecyclerView hrHistory;
-    private UserAdapter adapter;
+    private HistoryAdapter adapter;
     private List<User> userList;
     public AdminFragment() {
         // Required empty public constructor
@@ -40,7 +40,7 @@ public class AdminFragment extends Fragment {
 
         userList = new ArrayList<>();
 
-        adapter = new UserAdapter(getContext(),userList);
+        adapter = new HistoryAdapter(userList);
         hrHistory.setAdapter(adapter);
 
         fetchUsers();
