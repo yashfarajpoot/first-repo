@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 
@@ -30,19 +31,25 @@ public class NotificationsUtils {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         String NOTIFICATION_CHANNEL_ID = "com.abidingtech.notify";
 
+        Uri soundUri = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.sound);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .build();
 
             NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "Notification",
                     NotificationManager.IMPORTANCE_HIGH);
 
             notificationChannel.setDescription(body);
+            notificationChannel.setSound(soundUri, audioAttributes);
+
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
-        Uri soundUri = Uri.parse(
-                "android.resource://" +
-                        context.getPackageName() +
-                        "/raw/sound");
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID);
         notificationBuilder.setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -65,6 +72,7 @@ public class NotificationsUtils {
         notificationBuilder.setContentIntent(PendingIntent.getActivity(context, notiId, notificationIntent, PendingIntent.FLAG_IMMUTABLE));
         Notification notification = notificationBuilder.build();
         int id = new Random(System.currentTimeMillis()).nextInt(1000);
+
         notificationManager.notify(id, notification);
     }
 
