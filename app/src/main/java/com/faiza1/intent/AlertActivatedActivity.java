@@ -53,9 +53,11 @@ public class AlertActivatedActivity extends AppCompatActivity {
         @Override
         public void onLocationResult(@NonNull LocationResult locationResult) {
             for (Location location : locationResult.getLocations()) {
+//                String mapUrl = "https://www.google.com/maps/search/police+station/@" + location.getLatitude() + "," + location.getLongitude();
                 String mapUrl = "https://www.google.com/maps?q=" + location.getLatitude() + "," + location.getLongitude();
                 webView.loadUrl(mapUrl);
                 Log.d("Location", "Lat: " + location.getLatitude() + ", Lng: " + location.getLongitude());
+                Log.e("LocationURL", mapUrl);
                 fetchContactsFromFirebase(location);
 
                 break;
@@ -181,7 +183,7 @@ public class AlertActivatedActivity extends AppCompatActivity {
         Log.e("LOCATION", "startLocationUpdates: ");
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(Priority.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(10000); // 10 seconds
+        locationRequest.setInterval(20000); // 10 seconds
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
