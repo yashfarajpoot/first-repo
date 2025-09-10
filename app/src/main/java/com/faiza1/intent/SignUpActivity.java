@@ -116,6 +116,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     User user  = new User();
                                     user.setName(name);
                                     user.setEmail(email);
+                                    user.setStatus("active");
 
                                     new UserDAO().saveUser(user);
 

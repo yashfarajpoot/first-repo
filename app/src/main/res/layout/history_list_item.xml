@@ -35,6 +35,21 @@
                 android:textSize="15sp"
                 android:text="Email" />
 
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/btn_block"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Block"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:textColor="@android:color/white"/>
+
 
 
        </LinearLayout>

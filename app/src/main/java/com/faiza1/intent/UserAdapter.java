@@ -69,6 +69,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
                     .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
                     .show();
         });
+
     }
 
     @Override

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.faiza1.intent.model.User;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -34,6 +35,30 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
         User model = userList.get(position);
         holder.tvName.setText(model.getName());
         holder.tvEmail.setText(model.getEmail());
+ //block button krna
+        if ("blocked".equals(model.getStatus())) {
+            holder.btnBlock.setText("Unblock");
+        } else {
+            holder.btnBlock.setText("Block");
+
+        }
+
+        // Block/Unblock action
+        holder.btnBlock.setOnClickListener(v -> {
+            String newStatus = "blocked".equals(model.getStatus()) ? "active" : "blocked";
+
+            FirebaseDatabase.getInstance().getReference("Users")
+                    .child(model.getId())
+                    .child("status")
+                    .setValue(newStatus)
+                    .addOnSuccessListener(aVoid -> {
+                        model.setStatus(newStatus);
+                        notifyItemChanged(position);
+                        Toast.makeText(v.getContext(),
+                                "User " + newStatus,
+                                Toast.LENGTH_SHORT).show();
+                    });
+        });
       //  holder.tvImage.setText(model.getImage());
         holder.itemView.setOnClickListener(v -> {
 
